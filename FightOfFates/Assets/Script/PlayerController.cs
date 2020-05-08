@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private int extraJumps;
     public int extraJumpsValue;
 
+    public Animator animator;
+
     void Start()
     {
         extraJumps = extraJumpsValue;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
 
         if (facingRight == false && moveInput > 0)
         {
