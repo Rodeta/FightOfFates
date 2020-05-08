@@ -430,6 +430,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   extraJumpsValue: 0
+  animator: {fileID: 1128352515}
 --- !u!61 &1128352512
 BoxCollider2D:
   m_ObjectHideFlags: 0
