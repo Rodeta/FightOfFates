@@ -54,7 +54,15 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
+            animator.SetBool("IsGrounded", true);
         }
+        else
+        {
+            animator.SetBool("IsGrounded", false);
+        }
+
+
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -63,6 +71,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
+            
         }
 
     }
