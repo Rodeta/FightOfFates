@@ -2,25 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
     private float moveInput;
 
+
+
     private Rigidbody2D rb;
 
+
+
     private bool facingRight = true;
+
+
 
     private bool isGrounded;
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
 
+
+
     private int extraJumps;
     public int extraJumpsValue;
 
-    public Animator animator;
+
 
     void Start()
     {
@@ -28,14 +38,22 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+
+
     void FixedUpdate()
     {
 
+
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        print(isGrounded);
+
+
 
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
+
+
 
         if (facingRight == false && moveInput > 0)
         {
@@ -46,7 +64,11 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
+
+
     }
+
+
 
 
     void Update()
@@ -54,11 +76,6 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
-            animator.SetBool("IsGrounded", true);
-        }
-        else
-        {
-            animator.SetBool("IsGrounded", false);
         }
 
 
@@ -71,18 +88,23 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
-            
         }
 
     }
 
+
+
     void Flip()
     {
         facingRight = !facingRight;
-        //Vector3 Scaler = transform.localScale;
-        //Scaler.x *= -1;
-        //transform.localScale = Scaler;
-        transform.Rotate(0f, 180f, 0f);
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
+
+
+
+
+
 
 }
