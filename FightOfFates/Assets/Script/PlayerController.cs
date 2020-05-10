@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -79,9 +77,12 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+
+        // Vector3 Scaler = transform.localScale;
+        // Scaler.x *= -1;
+        // transform.localScale = Scaler;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 
 }
