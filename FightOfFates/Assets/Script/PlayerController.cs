@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private int extraJumps;
     public int extraJumpsValue;
 
+    public Animator animator;
+
     void Start()
     {
         extraJumps = extraJumpsValue;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
 
         if (facingRight == false && moveInput > 0)
         {
@@ -51,6 +54,11 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
+            animator.SetBool("IsGrounded", true);
+        }
+        else
+        {
+            animator.SetBool("IsGrounded", false);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
@@ -61,6 +69,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
+            
         }
 
     }
@@ -68,9 +77,12 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+
+        // Vector3 Scaler = transform.localScale;
+        // Scaler.x *= -1;
+        // transform.localScale = Scaler;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 
 }
