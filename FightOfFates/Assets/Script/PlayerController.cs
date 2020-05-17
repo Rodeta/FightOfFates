@@ -17,8 +17,15 @@ public class PlayerController : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+
+    // jump
     private int extraJumps;
     public int extraJumpsValue;
+
+    // smooth jump
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
 
     public Animator animator;
 
@@ -51,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
@@ -60,6 +69,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsGrounded", false);
         }
+
+
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
         {
@@ -71,6 +82,17 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             
         }
+
+        // smoth jump
+        if(rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if(rb.velocity.y>0 && !Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
 
     }
 
