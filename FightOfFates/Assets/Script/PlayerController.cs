@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private float moveInput;
 
     private Rigidbody2D rb;
+
+    public Joystick joystick;
+    public Button jump;
 
     private bool facingRight = true;
 
@@ -40,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxis("Horizontal");
+        moveInput = joystick.Horizontal;
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
 
@@ -59,6 +63,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        jump.onClick.AddListener(jumpMethode);
+        this.smothJump();
 
         if (isGrounded == true)
         {
@@ -70,29 +76,34 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
+    }
 
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+    void jumpMethode()
+    {
+        if ( extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
+        else if (extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
-            
-        }
 
-        // smoth jump
-        if(rb.velocity.y < 0)
+        }
+     
+    }
+
+    // Controls the speed of fall when the player is in the air.
+    void smothJump()
+    {
+        if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if(rb.velocity.y>0 && !Input.GetKeyDown(KeyCode.UpArrow))
+        else if (rb.velocity.y > 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-
 
     }
 
