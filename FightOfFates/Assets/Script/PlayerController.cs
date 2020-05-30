@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public Joystick joystick;
-    public Button jump;
 
     private bool facingRight = true;
 
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        jump.onClick.AddListener(jumpMethode);
         this.smothJump();
 
         if (isGrounded == true)
@@ -78,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void jumpMethode()
+    public void jumpMethode()
     {
         if ( extraJumps > 0)
         {
