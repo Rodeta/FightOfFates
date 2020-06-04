@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
     public float speed;
     public float jumpForce;
@@ -36,6 +37,31 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+
+        if(joystick == null)
+        {
+            //GameObject temp = GameObject.Find("/Canvas/Controll/Fixed Joystick");
+            joystick = FixedJoystick.Instance;
+            if(FixedJoystick.Instance == null)
+            {
+                Debug.Log("Instance is fucking null");
+            }
+            //joystick = (Joystick)temp;
+            //if (temp == null)
+            //{
+            //    Debug.Log("temp is null");
+            //}
+            //else
+            //{
+            //    Debug.Log(temp);
+            //}
+            //joystick = (Joystick)temp.GetComponent("Fixed Joystick(Script)");
+            //joystick = (Joystick)temp.GetComponent<Fixed Joystick(Script)>();
+            if (joystick == null)
+            {
+                Debug.Log("joystick is null");
+            }
+        }
     }
 
     void FixedUpdate()
@@ -43,10 +69,17 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = joystick.Horizontal;
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
-
+        if (photonView.IsMine == true && PhotonNetwork.IsConnected == true)
+        {
+            if(joystick == null)
+            {
+                joystick = FixedJoystick.Instance;
+            }
+            moveInput = joystick.Horizontal;
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
+        }
+        
         if (facingRight == false && moveInput > 0)
         {
             Flip();

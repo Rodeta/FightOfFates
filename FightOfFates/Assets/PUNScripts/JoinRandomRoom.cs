@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.IO;
 
 public class JoinRandomRoom : MonoBehaviourPunCallbacks
 {
@@ -15,6 +16,7 @@ public class JoinRandomRoom : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         UnityEngine.Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
+        PhotonNetwork.AutomaticallySyncScene = true;//For test purpose. Remove later, because players start in different scenes
         PhotonNetwork.JoinRandomRoom(); //First tries to join existing room
     }
 
@@ -55,5 +57,13 @@ public class JoinRandomRoom : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player other)
     {
         Debug.Log("OnPlayerLeftRoom()"); // seen when other disconnects
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        //Vector2 startPosition = new Vector2((float)-1.97857, (float)1.303732);
+        //PhotonNetwork.Instantiate(Path.Combine("AvatarPrefabs", "GangsterAvatar"), startPosition, Quaternion.identity, 0);
+        //Debug.Log("Player Instantiated");
     }
 }
