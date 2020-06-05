@@ -30,12 +30,22 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+
+    // healt 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
+
     public Animator animator;
 
     void Start()
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
@@ -63,6 +73,7 @@ public class PlayerController : MonoBehaviour
     {
 
         this.smothJump();
+        this.GetDamage();
 
         if (isGrounded == true)
         {
@@ -114,6 +125,22 @@ public class PlayerController : MonoBehaviour
         // transform.localScale = Scaler;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+
+    void GetDamage()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
 }
