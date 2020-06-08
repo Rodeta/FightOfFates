@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public Joystick joystick;
+
     private bool facingRight = true;
 
     private bool isGrounded;
@@ -17,8 +20,25 @@ public class PlayerController : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+
+    // jump
     private int extraJumps;
     public int extraJumpsValue;
+
+    // smooth jump
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+
+    // healt 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
+    // Span Point
+    [SerializeField] Transform spanPoint;
+
 
     public Animator animator;
 
@@ -26,6 +46,9 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
@@ -33,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxis("Horizontal");
+        moveInput = joystick.Horizontal;
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
 
@@ -51,6 +74,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        this.smothJump();
+        this.GetDamage();
+
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
@@ -61,15 +88,33 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+    }
+
+    public void jumpMethode()
+    {
+        if ( extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
+        else if (extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
-            
+
+        }
+     
+    }
+
+    // Controls the speed of fall when the player is in the air.
+    void smothJump()
+    {
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
     }
@@ -77,12 +122,36 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-
-        // Vector3 Scaler = transform.localScale;
-        // Scaler.x *= -1;
-        // transform.localScale = Scaler;
-
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    // For testing only.
+    void GetDamage()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+
+    }
+
+    // Damage is passed on to the figure.
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        this.CheckDeath();
+    }
+
+
+    void CheckDeath()
+    {
+        if(currentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+            this.transform.position = spanPoint.position;
+        }
     }
 
 }
