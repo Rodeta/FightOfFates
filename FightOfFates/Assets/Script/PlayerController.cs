@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0)
         {
             currentHealth = maxHealth;
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetMaxHealth(maxHealth);
             this.transform.position = spanPoint.position;
         }
     }

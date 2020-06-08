@@ -17,6 +17,9 @@ public class HealthBar : MonoBehaviour
     {
         slider.maxValue = health;
         slider.value = health;
+        StopCoroutine("FlashColor");
+        fill.color = originalColor;
+    
     }
 
     public void SetHealth(int healt)
@@ -25,19 +28,25 @@ public class HealthBar : MonoBehaviour
 
         if (slider.value < 30)
         {
-            StartCoroutine(FlashColor());
+            StartCoroutine("FlashColor");
         }
         
     }
 
     IEnumerator FlashColor()
     {
+
+            
             while (true)
             {
+
                 fill.color = newColor;
 
-                yield return new WaitForSeconds(.1f);
+                
+                yield return new WaitForSeconds(0.05f);
+                 
 
+          
                 if(fill.color == flashColor)
                 {
                     newColor = originalColor;
@@ -46,7 +55,9 @@ public class HealthBar : MonoBehaviour
                 {
                     newColor = flashColor;
                 }
-            }      
+
+
+            }
     }
 
 }
