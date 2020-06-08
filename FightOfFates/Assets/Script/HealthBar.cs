@@ -22,7 +22,6 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int healt)
     {
         slider.value = healt;
-        print("Huhu");
 
         if (slider.value < 30)
         {

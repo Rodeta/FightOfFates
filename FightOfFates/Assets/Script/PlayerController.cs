@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    // Span Point
+    [SerializeField] Transform spanPoint;
+
 
     public Animator animator;
 
@@ -119,15 +122,10 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-
-        // Vector3 Scaler = transform.localScale;
-        // Scaler.x *= -1;
-        // transform.localScale = Scaler;
-
         transform.Rotate(0f, 180f, 0f);
     }
 
-
+    // For testing only.
     void GetDamage()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -137,10 +135,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage)
+    // Damage is passed on to the figure.
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        this.CheckDeath();
+    }
+
+
+    void CheckDeath()
+    {
+        if(currentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
+            this.transform.position = spanPoint.position;
+        }
     }
 
 }
