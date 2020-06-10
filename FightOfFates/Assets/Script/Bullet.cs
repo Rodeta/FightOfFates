@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
 
     public float speed = 30f;
     public Rigidbody2D rb;
+
+    private float[] attackDetails = new float[2];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,21 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
+
+        BasicEnemyController enemy = hitInfo.GetComponentInParent<BasicEnemyController>();
+
+        
+        if(enemy != null)
+        {
+            attackDetails[0] = 1f;
+            attackDetails[1] = transform.position.x;
+            enemy.Damage(attackDetails);
+        }
+        
         Debug.Log(hitInfo.name);
         Destroy(gameObject);
+
+
     }
 
 }
