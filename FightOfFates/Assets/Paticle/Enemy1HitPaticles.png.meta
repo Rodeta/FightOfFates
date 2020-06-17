@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: b3260b34e82eb1f41b49b0097b07ef42
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1610219013831255051
+    second: Enemy1HitPaticles_0
+  - first:
+      213: -5030070150535352929
+    second: Enemy1HitPaticles_1
+  - first:
+      213: -8152117725667497432
+    second: Enemy1HitPaticles_2
+  - first:
+      213: 1892932638530511660
+    second: Enemy1HitPaticles_3
+  - first:
+      213: -7619971462014027145
+    second: Enemy1HitPaticles_4
+  - first:
+      213: 5394288166452806581
+    second: Enemy1HitPaticles_5
+  - first:
+      213: -6133485423198508968
+    second: Enemy1HitPaticles_6
+  - first:
+      213: -5847504910580012805
+    second: Enemy1HitPaticles_7
+  - first:
+      213: -522114778728461668
+    second: Enemy1HitPaticles_8
+  - first:
+      213: -8004249159906591520
+    second: Enemy1HitPaticles_9
+  - first:
+      213: 7151898809548795400
+    second: Enemy1HitPaticles_10
+  - first:
+      213: 7591384657621440957
+    second: Enemy1HitPaticles_11
+  - first:
+      213: 3598573108495490588
+    second: Enemy1HitPaticles_12
+  - first:
+      213: 7807706305960597722
+    second: Enemy1HitPaticles_13
+  - first:
+      213: -1538066685537350439
+    second: Enemy1HitPaticles_14
+  - first:
+      213: -8279034782588342986
+    second: Enemy1HitPaticles_0
+  - first:
+      213: 4932561802702812643
+    second: Enemy1HitPaticles_1
+  - first:
+      213: -2185717932621834496
+    second: Enemy1HitPaticles_2
+  - first:
+      213: -3566993759680202210
+    second: Enemy1HitPaticles_3
+  - first:
+      213: 8829202802516601035
+    second: Enemy1HitPaticles_4
+  - first:
+      213: 6297702415310004076
+    second: Enemy1HitPaticles_5
+  - first:
+      213: 8869749080319165798
+    second: Enemy1HitPaticles_6
+  - first:
+      213: 7753552659108253457
+    second: Enemy1HitPaticles_7
+  - first:
+      213: -3187570569569451420
+    second: Enemy1HitPaticles_8
+  - first:
+      213: 6735627474297832506
+    second: Enemy1HitPaticles_9
+  - first:
+      213: -2884885510587890214
+    second: Enemy1HitPaticles_10
+  - first:
+      213: -6820931605681339897
+    second: Enemy1HitPaticles_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy1HitPaticles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63de7bcbab5fa1d80800000000000000
+      internalID: -8279034782588342986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy1HitPaticles_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e5f2c263daf37440800000000000000
+      internalID: 4932561802702812643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy1HitPaticles_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007dfd6ee15caa1e0800000000000000
+      internalID: -2185717932621834496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy1HitPaticles_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1af936031e7f7ec0800000000000000
+      internalID: -3566993759680202210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

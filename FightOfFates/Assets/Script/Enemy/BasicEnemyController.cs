@@ -20,6 +20,9 @@ public class BasicEnemyController : MonoBehaviour
 
     [SerializeField] private Vector2 knockbackSpeed;
 
+    [SerializeField] private GameObject hitParticle, deathChunkParticle, deathBloodParticle;
+            
+
     private float currentHealth,knockbackStartTime ;
 
     private int facingDirection,damageDirection;
@@ -121,7 +124,9 @@ public class BasicEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
-        // Span chunks and blood
+
+        Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
+        Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -140,10 +145,10 @@ public class BasicEnemyController : MonoBehaviour
 
     public void Damage(float[] attackDetails)
     {
-        print("treffer");
-        print(currentHealth);
         currentHealth -= attackDetails[0];
-        print(currentHealth);
+
+        Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        
         if(attackDetails[1]> alive.transform.position.x)
         {
             damageDirection = -1;

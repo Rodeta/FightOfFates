@@ -7509,9 +7509,15 @@ MonoBehaviour:
   groundCheckDistance: 0.5
   wallCheckDistance: 0.5
   movementSpeed: 3
-  maxHealth: 100
-  knockbackDuration: 0.1
+  maxHealth: 4
+  knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 5}
+  hitParticle: {fileID: 6059185808222795216, guid: ed92f56d3a838344b85ba9aeeb5b06d7,
+    type: 3}
+  deathChunkParticle: {fileID: 1932873464594943405, guid: 006a5a85cd3b78149910b853e4ff1e05,
+    type: 3}
+  deathBloodParticle: {fileID: 3104075637423861090, guid: 16e82a0e1ae3f26429ceac8b259073b7,
+    type: 3}
 --- !u!1 &1445271760
 GameObject:
   m_ObjectHideFlags: 0
