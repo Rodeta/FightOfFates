@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadSettings()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); Todo: Correct Number of scene
+    }
 }
