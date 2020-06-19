@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Packages.Rider.Editor.UnitTesting;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class BasicEnemyController : MonoBehaviour
         Dead
     }
 
+    public PlayerController player;
+    private BoxCollider2D playerBc;
+
+
     private bool groundDetected, wallDetected;
 
     [SerializeField] private Transform groundCheck, wallCheck;
@@ -21,6 +26,7 @@ public class BasicEnemyController : MonoBehaviour
     [SerializeField] private Vector2 knockbackSpeed;
 
     [SerializeField] private GameObject hitParticle, deathChunkParticle, deathBloodParticle;
+
             
 
     private float currentHealth,knockbackStartTime ;
@@ -31,7 +37,11 @@ public class BasicEnemyController : MonoBehaviour
 
     private Rigidbody2D aliveRb;
 
+    private BoxCollider2D aliveBc;
+
     private Vector2 movement;
+
+    private float lastAttack;
 
     private Animator aliveAnim;
 
@@ -45,11 +55,20 @@ public class BasicEnemyController : MonoBehaviour
         aliveAnim = alive.GetComponent<Animator>();
         currentHealth = maxHealth;
 
+
+        // new
+
+        playerBc = player.GetComponent<BoxCollider2D>();
+        aliveBc = alive.GetComponent<BoxCollider2D>();
+
+
+
     }
 
 
     private void Update()
     {
+        
         switch(currentState)
         {
             case State.Moving:
@@ -61,10 +80,10 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 UpdateDeadState();
                 break;
-
         }
-    }
 
+        ChackAttac();
+    }
 
     private State currentState;
 
@@ -142,6 +161,27 @@ public class BasicEnemyController : MonoBehaviour
 
     //--OTHER FUNCTIONS -------------------------------------------------------------------
 
+    void ChackAttac()
+    {
+
+        if (Time.time >= lastAttack + 0.2)
+        {
+
+            if (aliveBc.IsTouching(playerBc))
+            {
+                float[] attackDetails = new float[2];
+                attackDetails[0] = 2f;
+                attackDetails[1] = alive.transform.position.x;
+                player.DamageWithKnockback(attackDetails);
+                lastAttack = Time.time;
+
+            }
+
+        }
+           
+       
+
+    }
 
     public void Damage(float[] attackDetails)
     {
@@ -207,9 +247,12 @@ public class BasicEnemyController : MonoBehaviour
         currentState = state;
     }
 
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
     }
+
+    
 }

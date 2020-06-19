@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Packages.Rider.Editor.UnitTesting;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform spanPoint;
 
 
+    //new 
+    private bool knockback;
+    private float knockbackStartTime;
+
+    [SerializeField]
+    private float knockbackDuration;
+
+    [SerializeField] 
+    Vector2 knockbackSpeed;
+
+
+
     public Animator animator;
 
     void Start()
@@ -56,10 +69,13 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = joystick.Horizontal;
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
-
+        if (!knockback)
+        {
+            moveInput = joystick.Horizontal;
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
+        }
+          
         if (facingRight == false && moveInput > 0)
         {
             Flip();
@@ -76,7 +92,8 @@ public class PlayerController : MonoBehaviour
     {
 
         this.smothJump();
-        this.GetDamage();
+       // this.GetDamage();
+        this.CheckKnockback();
 
         if (isGrounded == true)
         {
@@ -124,24 +141,56 @@ public class PlayerController : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
-
-    // For testing only.
-    void GetDamage()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
-
-    }
-
+    
     // Damage is passed on to the figure.
     public void TakeDamage(int damage)
     {
+        print("Take damage");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         this.CheckDeath();
     }
+
+  
+    public void DamageWithKnockback(float[] attackDetails)
+    {
+
+        // knockback Controller
+        int direction;
+        if(attackDetails[1]< transform.position.x)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1;
+        }
+        Knockback(direction);
+        TakeDamage(10);
+
+    }
+
+
+    public void Knockback(int direction)
+    {
+        knockback = true;
+        knockbackStartTime = Time.time;
+
+        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+        CheckKnockback();
+    }
+
+
+    private void CheckKnockback()
+    {
+        if(Time.time >= knockbackStartTime + knockbackDuration && knockback)
+        {
+           
+            knockback = false;
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+        }
+    }
+
 
 
     void CheckDeath()
