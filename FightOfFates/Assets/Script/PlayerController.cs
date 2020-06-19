@@ -145,7 +145,6 @@ public class PlayerController : MonoBehaviour
     // Damage is passed on to the figure.
     public void TakeDamage(int damage)
     {
-        print("Take damage");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         this.CheckDeath();
@@ -154,7 +153,6 @@ public class PlayerController : MonoBehaviour
   
     public void DamageWithKnockback(float[] attackDetails)
     {
-
         // knockback Controller
         int direction;
         if(attackDetails[1]< transform.position.x)
@@ -167,7 +165,6 @@ public class PlayerController : MonoBehaviour
         }
         Knockback(direction);
         TakeDamage(10);
-
     }
 
 
