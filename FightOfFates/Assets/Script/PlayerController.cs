@@ -1,8 +1,4 @@
-﻿using Packages.Rider.Editor.UnitTesting;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -51,6 +47,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     Vector2 knockbackSpeed;
 
+    public ParticleSystem dust;
 
 
     public Animator animator;
@@ -111,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
     public void jumpMethode()
     {
+        CreateDust();
         if ( extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -140,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
+        CreateDust();
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
@@ -200,6 +199,12 @@ public class PlayerController : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
             this.transform.position = spanPoint.position;
         }
+    }
+
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 
 }
