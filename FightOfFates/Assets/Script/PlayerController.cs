@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        GameObject test = GameObject.Find("Fixed Joystick");
+        joystick = test.GetComponent<FixedJoystick>();
+        
+        healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
 

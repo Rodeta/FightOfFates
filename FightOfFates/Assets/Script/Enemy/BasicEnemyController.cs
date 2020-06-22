@@ -9,7 +9,13 @@ public class BasicEnemyController : MonoBehaviour
         Dead
     }
 
-    public PlayerController player;
+    // new 
+
+    public SelectPlayerController selectPlayerController;
+
+
+    private GameObject player;
+    private PlayerController playerController;
     private BoxCollider2D playerBc;
 
 
@@ -55,6 +61,8 @@ public class BasicEnemyController : MonoBehaviour
 
         // new
 
+        player = selectPlayerController.PlayerPrefab;
+        playerController = player.GetComponent<PlayerController>();
         playerBc = player.GetComponent<BoxCollider2D>();
         aliveBc = alive.GetComponent<BoxCollider2D>();
 
@@ -169,7 +177,7 @@ public class BasicEnemyController : MonoBehaviour
                 float[] attackDetails = new float[2];
                 attackDetails[0] = 2f;
                 attackDetails[1] = alive.transform.position.x;
-                player.DamageWithKnockback(attackDetails);
+                playerController.DamageWithKnockback(attackDetails);
                 lastAttack = Time.time;
 
             }
