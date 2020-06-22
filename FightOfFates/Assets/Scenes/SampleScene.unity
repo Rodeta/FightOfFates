@@ -7247,6 +7247,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4431559551109896016, guid: 44a9cd32e54a1524ab4692e30fb706c6,
     type: 3}
   shoot: {fileID: 394446666}
+  animator: {fileID: 1128352515}
+  player: {fileID: 0}
 --- !u!1 &1152305511
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,7 +7486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433331571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.06, y: -10.4, z: -10}
+  m_LocalPosition: {x: 54.37, y: -8.76, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 322074466}

@@ -99,10 +99,12 @@ public class PlayerController : MonoBehaviour
         {
             extraJumps = extraJumpsValue;
             animator.SetBool("IsGrounded", true);
+        
         }
         else
         {
             animator.SetBool("IsGrounded", false);
+           
         }
 
     }
