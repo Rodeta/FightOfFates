@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
 
     // Span Point
-    [SerializeField] Transform spanPoint;
+    private Transform spawnPoint;
 
 
     //new 
@@ -50,6 +51,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem dust;
 
 
+    // Button controll
+    private Button jumpButton;
+
+
+
+
     public Animator animator;
 
     void Start()
@@ -63,6 +70,11 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        jumpButton = GameObject.Find("Jump").GetComponent<Button>();
+        jumpButton.onClick.AddListener(jumpMethode);
+
+        spawnPoint = GameObject.Find("SpawnPoint").transform;
     }
 
     void FixedUpdate()
@@ -201,7 +213,7 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
-            this.transform.position = spanPoint.position;
+            this.transform.position = spawnPoint.position;
         }
     }
 

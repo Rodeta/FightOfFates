@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     private PlayerController playerController;
     private float animationTime;
     private bool animationIsRun;
+    private Button shootButton;
 
 
 
@@ -18,19 +19,15 @@ public class Weapon : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         animator = playerController.animator;
         animationIsRun = false;
+
+        shootButton = GameObject.Find("Shoot").GetComponent<Button>();
+        shootButton.onClick.AddListener(Shoot);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            
-            Shoot();     
-        }
-
         if(animationTime !=0 && Time.time > animationTime + 0.02f && animationIsRun)
         {
             StopShootAnimation();
@@ -47,7 +44,7 @@ public class Weapon : MonoBehaviour
 
     void StopShootAnimation()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
         animator.SetBool("IsShooting", false);
         animationIsRun = false;
     }

@@ -11,7 +11,6 @@ public class BasicEnemyController : MonoBehaviour
 
     // new 
 
-    public SelectPlayerController selectPlayerController;
 
 
     private GameObject player;
@@ -61,7 +60,7 @@ public class BasicEnemyController : MonoBehaviour
 
         // new
 
-        player = selectPlayerController.PlayerPrefab;
+        player = GameObject.Find("Player(Clone)");
         playerController = player.GetComponent<PlayerController>();
         playerBc = player.GetComponent<BoxCollider2D>();
         aliveBc = alive.GetComponent<BoxCollider2D>();

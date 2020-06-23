@@ -4,26 +4,37 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     
-    public float smoothSpeed = 0.125f;
+    public float smoothSpeed = 0.080f;
     public Vector3 offset;
     public GameObject selectPlayerController;
     private Transform target;
 
-    public void Start()
+    void FixedUpdate()
     {
-        target = selectPlayerController.GetComponent<SelectPlayerController>().PlayerPrefab.transform;
+        if(target == null)
+        {
+            try
+            {
+                target = GameObject.Find("Player(Clone)").transform;
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+            
+        }
+        else
+        {
+            Vector3 desiredPosition = target.position + offset;
+
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+
+            transform.position = smoothedPosition;
+        }
+       
         
     }
-    void LateUpdate()
-    {
-        
-        Vector3 desiredPosition = target.position + offset;
-        print(target.position);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        transform.position = smoothedPosition;
-
-        
-    }
+  
     
 }

@@ -1,11 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Lava : MonoBehaviour
 {
-    public PlayerController player;
+    private PlayerController player;
 
+    private void Update()
+    {
+        if(player == null)
+        {
+            try
+            {
+                player = GameObject.Find("Player(Clone)").GetComponent<PlayerController>();
+            }
+            catch(Exception e)
+            {
+                return;
+            }   
+        }   
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
