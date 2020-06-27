@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayTutorial()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(2);
     }
 
 
@@ -18,6 +19,6 @@ public class MainMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); Todo: Correct Number of scene
+        SceneManager.LoadScene(1);
     }
 }
