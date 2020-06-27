@@ -33,10 +33,23 @@ public class PlayerController : MonoBehaviourPun
 
     public Animator animator;
 
+    private static PhotonView localPlayerPhotonView;
+
+    public static bool IsLocalPlayerInput()
+    {
+        Debug.Log("CheckIsLocal: " + localPlayerPhotonView.IsMine);
+        if(localPlayerPhotonView != null)
+        {
+            Debug.Log("infinalchecklocal");
+            return localPlayerPhotonView.IsMine && PhotonNetwork.IsConnected;
+        }
+        return true;//when testing offline
+    }
     void Start()
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+        localPlayerPhotonView = photonView;
 
         if(joystick == null)
         {
@@ -44,7 +57,7 @@ public class PlayerController : MonoBehaviourPun
             joystick = FixedJoystick.Instance;
             if(FixedJoystick.Instance == null)
             {
-                Debug.Log("Instance is fucking null");
+                Debug.Log("Instance is null");
             }
             //joystick = (Joystick)temp;
             //if (temp == null)
@@ -62,6 +75,15 @@ public class PlayerController : MonoBehaviourPun
                 Debug.Log("joystick is null");
             }
         }
+
+        //setup camera target
+        CameraFollow.target = rb.transform;
+
+        //setup jump
+        GameObject.Find("Jump").GetComponent<Button>().onClick.AddListener(jumpMethode);
+
+        //setup shoot
+        GameObject.Find("Shoot").GetComponent<Button>().onClick.AddListener(Shoot);
     }
 
     void FixedUpdate()
@@ -80,11 +102,11 @@ public class PlayerController : MonoBehaviourPun
             animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
         }
         
-        if (facingRight == false && moveInput > 0)
+        if (facingRight == false && rb.velocity.x > 0)
         {
             Flip();
         }
-        else if (facingRight == true && moveInput < 0)
+        else if (facingRight == true && rb.velocity.x < 0)
         {
             Flip();
         }
@@ -111,17 +133,19 @@ public class PlayerController : MonoBehaviourPun
 
     public void jumpMethode()
     {
-        if ( extraJumps > 0)
+        if (photonView.IsMine == true && PhotonNetwork.IsConnected == true)
         {
-            rb.velocity = Vector2.up * jumpForce;
-            extraJumps--;
-        }
-        else if (extraJumps == 0 && isGrounded == true)
-        {
-            rb.velocity = Vector2.up * jumpForce;
+            if (extraJumps > 0)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+                extraJumps--;
+            }
+            else if (extraJumps == 0 && isGrounded == true)
+            {
+                rb.velocity = Vector2.up * jumpForce;
 
+            }
         }
-     
     }
 
     // Controls the speed of fall when the player is in the air.
@@ -147,6 +171,15 @@ public class PlayerController : MonoBehaviourPun
         // transform.localScale = Scaler;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    void Shoot()
+    {
+        if(photonView.IsMine == true && PhotonNetwork.IsConnected == true)
+        {
+            Weapon w = GetComponent<Weapon>();
+            w.Shoot();
+        }
     }
 
 }
