@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    private PlayerController player;
+    public SelectPlayerController selectPlayerController;
+    private PlayerController gangsterPlayer;
+    private BasicPlayerController basicPlayer;
+
 
     private void Update()
     {
-        if (player == null)
+        if (gangsterPlayer == null && basicPlayer == null)
         {
             try
             {
-                player = GameObject.Find("Player(Clone)").GetComponent<PlayerController>();
+                if(selectPlayerController.modus == 0)
+                {
+                    basicPlayer = GameObject.Find("BasicPlayer(Clone)").GetComponent<BasicPlayerController>();
+                }
+                else
+                {
+                    gangsterPlayer = GameObject.Find("Player(Clone)").GetComponent<PlayerController>();
+                }
+                
             }
             catch (Exception e)
             {
@@ -25,7 +36,15 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.TakeDamage(20);
+        if(selectPlayerController.modus == 0)
+        {
+
+        }
+        else
+        {
+            gangsterPlayer.TakeDamage(20);
+        }
+        
        
     }
 }

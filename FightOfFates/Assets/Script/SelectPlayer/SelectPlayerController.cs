@@ -5,7 +5,11 @@ using UnityEngine;
 public class SelectPlayerController : MonoBehaviour
 {
 
-    public GameObject PlayerPrefab;
+    public int modus;
+   
+    public GameObject BasicPlayerPrefab;
+    public GameObject GangsterPlayerPrefab;
+
     // Span Point
     [SerializeField] Transform spanPoint;
 
@@ -13,7 +17,17 @@ public class SelectPlayerController : MonoBehaviour
     void Start()
     {
 
-        Instantiate(PlayerPrefab, spanPoint.position, spanPoint.rotation);
+
+        if(modus == 0)
+        {
+            Instantiate(BasicPlayerPrefab, spanPoint.position, spanPoint.rotation);
+        }
+        else
+        {
+            Instantiate(GangsterPlayerPrefab, spanPoint.position, spanPoint.rotation);
+        }
+
+        
 
     }
 

@@ -15,6 +15,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private GameObject player;
     private PlayerController playerController;
+    private BasicPlayerController basicPlayerController;
+
     private BoxCollider2D playerBc;
 
 
@@ -47,6 +49,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private Animator aliveAnim;
 
+    public SelectPlayerController selectPlayerController;
+
 
 
     public void Start()
@@ -60,8 +64,21 @@ public class BasicEnemyController : MonoBehaviour
 
         // new
 
-        player = GameObject.Find("Player(Clone)");
-        playerController = player.GetComponent<PlayerController>();
+
+        if(selectPlayerController.modus == 0)
+        {
+            player = GameObject.Find("BasicPlayer(Clone)");
+            basicPlayerController = player.GetComponent<BasicPlayerController>();
+
+        }
+        else
+        {
+
+            player = GameObject.Find("Player(Clone)");
+            playerController = player.GetComponent<PlayerController>();
+        }
+
+       
         playerBc = player.GetComponent<BoxCollider2D>();
         aliveBc = alive.GetComponent<BoxCollider2D>();
 
@@ -176,7 +193,17 @@ public class BasicEnemyController : MonoBehaviour
                 float[] attackDetails = new float[2];
                 attackDetails[0] = 2f;
                 attackDetails[1] = alive.transform.position.x;
-                playerController.DamageWithKnockback(attackDetails);
+
+                if(selectPlayerController.modus == 0)
+                {
+                   // todo
+                   // basicPlayerController.DamafeWithKnockback(attackDetails);
+                }
+                else
+                {
+                    playerController.DamageWithKnockback(attackDetails);
+                }
+
                 lastAttack = Time.time;
 
             }

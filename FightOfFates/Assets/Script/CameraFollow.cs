@@ -3,19 +3,28 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    
+
     public float smoothSpeed = 0.080f;
     public Vector3 offset;
-    public GameObject selectPlayerController;
+    public SelectPlayerController selectPlayerController;
     private Transform target;
 
     void FixedUpdate()
     {
+
         if(target == null)
         {
             try
             {
-                target = GameObject.Find("Player(Clone)").transform;
+                if(selectPlayerController.modus== 0)
+                {
+                    target = GameObject.Find("BasicPlayer(Clone)").transform;
+                }
+                else 
+                {
+                    target = GameObject.Find("Player(Clone)").transform;
+                }
+                
             }
             catch (Exception e)
             {
