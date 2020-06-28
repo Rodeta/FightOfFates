@@ -148,24 +148,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0886e63211c96364a9ad6f72671914ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  extraJumps: 1
   jumpForce: 19
-  joystick: {fileID: 0}
+  maxHealth: 100
+  dust: {fileID: 6220934354713551425}
+  knockbackDuration: 0.2
+  knockbackSpeed: {x: 10, y: 10}
+  speed: 15
   groundCheck: {fileID: 6220934353949792490}
   checkRadius: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumpsValue: 1
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
-  spanPoint: {fileID: 0}
-  knockbackDuration: 0.2
-  knockbackSpeed: {x: 10, y: 10}
-  dust: {fileID: 6220934354713551425}
   animator: {fileID: 6220934353922368660}
 --- !u!95 &6220934353922368660
 Animator:
