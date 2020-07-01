@@ -16,15 +16,7 @@ public class CameraFollow : MonoBehaviour
         {
             try
             {
-                if(selectPlayerController.modus== 0)
-                {
-                    target = GameObject.Find("BasicPlayer(Clone)").transform;
-                }
-                else 
-                {
-                    target = GameObject.Find("Player(Clone)").transform;
-                }
-                
+                target = GameObject.Find("Player").transform;
             }
             catch (Exception e)
             {

@@ -690,7 +690,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2636fe4d1dbcc084e99af6ce3e9e69fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7073,10 +7073,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fa19598e6b9194897ae1bfcacad25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modus: 0
+  modus: 1
   BasicPlayerPrefab: {fileID: 4714910997870899226, guid: f079ea87893c9c3479dc5f575f8e290f,
     type: 3}
   GangsterPlayerPrefab: {fileID: 6220934353922368874, guid: afbd29ee27787b7499dda5cabd881c12,
+    type: 3}
+  ArcherPlayerPrefab: {fileID: 141077965215196269, guid: ae98bb651fdec3b4c9317d43f6e8e857,
     type: 3}
   spanPoint: {fileID: 796070881}
 --- !u!1 &1294593413

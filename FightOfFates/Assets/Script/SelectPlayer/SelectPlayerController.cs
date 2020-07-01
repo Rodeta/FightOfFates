@@ -9,6 +9,7 @@ public class SelectPlayerController : MonoBehaviour
    
     public GameObject BasicPlayerPrefab;
     public GameObject GangsterPlayerPrefab;
+    public GameObject ArcherPlayerPrefab;
 
     // Span Point
     [SerializeField] Transform spanPoint;
@@ -16,18 +17,22 @@ public class SelectPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject player;
 
         if(modus == 0)
         {
-            Instantiate(BasicPlayerPrefab, spanPoint.position, spanPoint.rotation);
+           player = Instantiate(BasicPlayerPrefab, spanPoint.position, spanPoint.rotation);
+        }
+        else if(modus == 1)
+        {
+           player = Instantiate(GangsterPlayerPrefab, spanPoint.position, spanPoint.rotation);
         }
         else
         {
-            Instantiate(GangsterPlayerPrefab, spanPoint.position, spanPoint.rotation);
+           player =  Instantiate(ArcherPlayerPrefab, spanPoint.position, spanPoint.rotation);
         }
 
-        
+        player.gameObject.name = "Player";
 
     }
 

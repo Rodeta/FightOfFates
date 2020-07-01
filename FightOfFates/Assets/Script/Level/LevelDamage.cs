@@ -14,15 +14,7 @@ public class LevelDamage : MonoBehaviour
         {
             try
             {
-                if (selectPlayerController.modus == 0)
-                {
-                    player = GameObject.Find("BasicPlayer(Clone)").GetComponent<BasicPlayerController>();
-                }
-                else
-                {
-                    player = GameObject.Find("Player(Clone)").GetComponent<PlayerController>();
-                }
-
+                player = GameObject.Find("Player").GetComponent<Player>();
             }
             catch (Exception e)
             {
