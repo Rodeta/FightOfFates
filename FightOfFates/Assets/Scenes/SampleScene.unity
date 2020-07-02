@@ -7073,7 +7073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fa19598e6b9194897ae1bfcacad25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modus: 1
+  modus: 2
   BasicPlayerPrefab: {fileID: 4714910997870899226, guid: f079ea87893c9c3479dc5f575f8e290f,
     type: 3}
   GangsterPlayerPrefab: {fileID: 6220934353922368874, guid: afbd29ee27787b7499dda5cabd881c12,

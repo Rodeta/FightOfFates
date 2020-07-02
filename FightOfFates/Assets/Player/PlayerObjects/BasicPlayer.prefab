@@ -4854,7 +4854,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4865,7 +4865,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.81, y: 2.31}
+  m_Size: {x: 1.81, y: 2.16}
   m_EdgeRadius: 0
 --- !u!50 &4714910997870899229
 Rigidbody2D:
@@ -4900,21 +4900,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a22aae064e2984e8e0267457eb2a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  extraJumps: 0
   jumpForce: 19
-  joystick: {fileID: 0}
+  maxHealth: 100
+  dust: {fileID: 4714910997761315267}
+  knockbackDuration: 0
+  knockbackSpeed: {x: 0, y: 0}
+  speed: 15
   groundCheck: {fileID: 4714910998184119969}
   checkRadius: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumpsValue: 1
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
-  dust: {fileID: 4714910997761315267}
   animator: {fileID: 4714910997870899216}
 --- !u!95 &4714910997870899216
 Animator:
