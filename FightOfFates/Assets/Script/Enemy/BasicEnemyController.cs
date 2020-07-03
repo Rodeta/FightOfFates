@@ -9,12 +9,9 @@ public class BasicEnemyController : MonoBehaviour
         Dead
     }
 
-    // new 
-
-
-
     private GameObject player;
-    private PlayerController playerController;
+    private Player playerController;
+
     private BoxCollider2D playerBc;
 
 
@@ -47,6 +44,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private Animator aliveAnim;
 
+    public SelectPlayerController selectPlayerController;
+
 
 
     public void Start()
@@ -57,11 +56,9 @@ public class BasicEnemyController : MonoBehaviour
         aliveAnim = alive.GetComponent<Animator>();
         currentHealth = maxHealth;
 
-
-        // new
-
-        player = GameObject.Find("Player(Clone)");
-        playerController = player.GetComponent<PlayerController>();
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<Player>();
+   
         playerBc = player.GetComponent<BoxCollider2D>();
         aliveBc = alive.GetComponent<BoxCollider2D>();
 
@@ -176,6 +173,7 @@ public class BasicEnemyController : MonoBehaviour
                 float[] attackDetails = new float[2];
                 attackDetails[0] = 2f;
                 attackDetails[1] = alive.transform.position.x;
+
                 playerController.DamageWithKnockback(attackDetails);
                 lastAttack = Time.time;
 

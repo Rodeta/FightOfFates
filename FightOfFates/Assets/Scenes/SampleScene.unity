@@ -690,7 +690,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2636fe4d1dbcc084e99af6ce3e9e69fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5473,7 +5473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 0.125
   offset: {x: 0, y: 2, z: 0}
-  selectPlayerController: {fileID: 1274602292}
+  selectPlayerController: {fileID: 1274602294}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -5689,6 +5689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8d7ef4125bb2645aa0224e79a243c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayerController: {fileID: 1274602294}
 --- !u!61 &541373205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6921,6 +6922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1527888f98ab64445b89c96fd002b7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectPlayerController: {fileID: 1274602294}
 --- !u!61 &943013326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7071,7 +7073,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fa19598e6b9194897ae1bfcacad25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 6220934353922368874, guid: afbd29ee27787b7499dda5cabd881c12,
+  modus: 2
+  BasicPlayerPrefab: {fileID: 4714910997870899226, guid: f079ea87893c9c3479dc5f575f8e290f,
+    type: 3}
+  GangsterPlayerPrefab: {fileID: 6220934353922368874, guid: afbd29ee27787b7499dda5cabd881c12,
+    type: 3}
+  ArcherPlayerPrefab: {fileID: 141077965215196269, guid: ae98bb651fdec3b4c9317d43f6e8e857,
     type: 3}
   spanPoint: {fileID: 796070881}
 --- !u!1 &1294593413
@@ -7281,7 +7288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433331571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.37, y: -8.76, z: 0}
+  m_LocalPosition: {x: 34.79, y: -10.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 322074466}
@@ -7317,6 +7324,7 @@ MonoBehaviour:
     type: 3}
   deathBloodParticle: {fileID: 3104075637423861090, guid: 16e82a0e1ae3f26429ceac8b259073b7,
     type: 3}
+  selectPlayerController: {fileID: 1274602294}
 --- !u!1 &1445271760
 GameObject:
   m_ObjectHideFlags: 0
