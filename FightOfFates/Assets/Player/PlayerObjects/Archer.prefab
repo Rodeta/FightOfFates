@@ -4980,6 +4980,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 9169595824249073727, guid: 9cf739d7887689246a3d9e2dc1ec77d6,
     type: 3}
   animator: {fileID: 141077965215196278}
+  arrowUpdate: 1
 --- !u!1 &987285300913533827
 GameObject:
   m_ObjectHideFlags: 0

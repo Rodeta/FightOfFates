@@ -9,18 +9,35 @@ public class Arrow : MonoBehaviour
     public float speed = 0f;
     public Rigidbody2D rb;
 
+
+    public Sprite normal;
+    public Sprite update;
+
+    public bool arrowUpdate;
+
+
     private float[] attackDetails = new float[2];
 
     // Start is called before the first frame update
     void Start()
     {
+
+        if (arrowUpdate)
+        {
+            GetComponent<SpriteRenderer>().sprite = update;
+            speed = 38f;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = normal;
+        }
+
         rb.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
-        print("trigger");
         BasicEnemyController enemy = hitInfo.GetComponentInParent<BasicEnemyController>();
 
 

@@ -5,6 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
+    public Sprite normal;
+    public Sprite update;
+
+    public bool bulletUpdate;
 
     public float speed = 30f;
     public Rigidbody2D rb;
@@ -14,6 +18,17 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (bulletUpdate)
+        {
+            GetComponent<SpriteRenderer>().sprite = update;
+            speed = 38f;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = normal;
+        }
+
         rb.velocity = transform.right * speed;
     }
 
@@ -32,8 +47,6 @@ public class Bullet : MonoBehaviour
         
         Debug.Log(hitInfo.name);
         Destroy(gameObject);
-
-
     }
 
 }
