@@ -15,7 +15,7 @@ public class Arch : MonoBehaviour
     private bool animationIsRun;
     private Button shootButton;
 
-    public bool arrowUpdate;
+    private bool arrowUpdate = UpgradeController.GetArrowUpdate();
 
 
     private void Start()

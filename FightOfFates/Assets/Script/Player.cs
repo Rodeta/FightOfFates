@@ -27,7 +27,7 @@ public abstract class Player : MonoBehaviour
 
                        //############################ Health ###############################################
     protected int currentHealth;
-    public int maxHealth;
+    private int maxHealth;
 
     protected Rigidbody2D rb;
     protected bool facingRight = true;
@@ -56,6 +56,19 @@ public abstract class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Max health upgrade
+        if (UpgradeController.GetMaxHealthUpgrade())
+        {
+            maxHealth = 200;
+        }
+        else if (UpgradeController.GetSmallHealthUpgrade())
+        {
+            maxHealth = 150;
+        }
+        else
+        {
+            maxHealth = 100;
+        }
 
         GameObject fixedJoystick = GameObject.Find("Fixed Joystick");
         joystick = fixedJoystick.GetComponent<FixedJoystick>();
@@ -73,13 +86,8 @@ public abstract class Player : MonoBehaviour
 
         spawnPoint = GameObject.Find("SpawnPoint").transform;
 
-
-
-
     }
  
-
-
     //
     public void jumpMethode()
     {

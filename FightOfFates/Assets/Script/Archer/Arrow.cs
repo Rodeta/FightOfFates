@@ -9,11 +9,10 @@ public class Arrow : MonoBehaviour
     public float speed = 0f;
     public Rigidbody2D rb;
 
-
     public Sprite normal;
     public Sprite update;
 
-    public bool arrowUpdate;
+    private bool arrowUpdate = UpgradeController.GetArrowUpdate();
 
 
     private float[] attackDetails = new float[2];

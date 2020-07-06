@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8962036954644270620}
   - component: {fileID: 3176786717830484736}
   - component: {fileID: 2437832987818104969}
-  - component: {fileID: 4991178975373465124}
+  - component: {fileID: 8998837664098535391}
   m_Layer: 11
   m_Name: Arrow_Normal 1
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0.78, y: 0.04}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &4991178975373465124
+--- !u!114 &8998837664098535391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9169595824249073727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 161b7ad0a29787943a72f5d254d41a72, type: 3}
+  m_Script: {fileID: 11500000, guid: b446456ad0ea6da4b98d0d481106fb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 0
   rb: {fileID: 3176786717830484736}
   normal: {fileID: 21300000, guid: 0636ef0288cd127408887a171390f165, type: 3}
   update: {fileID: 21300000, guid: 0af1857deed1b8342aeb61be1cf6c34a, type: 3}

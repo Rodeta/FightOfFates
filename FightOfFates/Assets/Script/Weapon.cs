@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
 
 
     // update Controller
-    public bool doubleShoot = true;
+    private bool doubleShoot = UpgradeController.GetBulletUpdate();
 
 
     private void Start()

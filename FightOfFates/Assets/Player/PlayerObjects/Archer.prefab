@@ -4798,7 +4798,7 @@ GameObject:
   - component: {fileID: 141077965215196266}
   - component: {fileID: 141077965215196278}
   - component: {fileID: 141077965215196279}
-  - component: {fileID: 4480666443927072752}
+  - component: {fileID: 4058320206611435691}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -4964,7 +4964,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 141077965215196278}
---- !u!114 &4480666443927072752
+--- !u!114 &4058320206611435691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4973,7 +4973,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 141077965215196269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ef2c6774de0b94fb7524c80964e022, type: 3}
+  m_Script: {fileID: 11500000, guid: e4acf8f71ea45fc4782e1e187a374c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8557674784923803002}
