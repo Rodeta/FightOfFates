@@ -9,6 +9,8 @@ public class UpgradeController : MonoBehaviour
     private static bool maxHealthUpgrade= true;
     private static bool smallHealthUpgrade;
 
+    private static bool doubleShoot = true;
+
 
     public static bool GetBulletUpdate()
     {
@@ -49,5 +51,10 @@ public class UpgradeController : MonoBehaviour
     public static void SetSmallHealthUpgrade(bool smallHealthUpgrade1)
     {
         smallHealthUpgrade = smallHealthUpgrade1;
+    }
+
+    public static bool GetDoubleShootUpgrade()
+    {
+        return doubleShoot;
     }
 }

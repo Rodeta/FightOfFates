@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Weapon : MonoBehaviour
 {
     public Transform firePoint;
+    public Transform firePoint2;
     public GameObject bulletPrefab;
     public Animator animator;
     private PlayerController playerController;
@@ -14,7 +15,7 @@ public class Weapon : MonoBehaviour
 
 
     // update Controller
-    private bool doubleShoot = UpgradeController.GetBulletUpdate();
+    private bool doubleShoot = UpgradeController.GetDoubleShootUpgrade();
 
 
     private void Start()
@@ -54,7 +55,11 @@ public class Weapon : MonoBehaviour
       void StopShootAnimation()
     {
         Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
-
+        if (doubleShoot)
+        {
+            Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+        }
+        
         animator.SetBool("IsShooting", false);
         animationIsRun = false;
 

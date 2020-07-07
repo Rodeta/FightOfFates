@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &520490583714348464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2609306124340958232}
+  m_Layer: 0
+  m_Name: FirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2609306124340958232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520490583714348464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.47, y: -0.065, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6220934353922368873}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6220934353922368874
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6220934354038597375}
+  - {fileID: 2609306124340958232}
   - {fileID: 6220934353949792490}
   - {fileID: 6220934354713551427}
   m_Father: {fileID: 0}
@@ -150,7 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraJumps: 1
   jumpForce: 19
-  maxHealth: 100
   dust: {fileID: 6220934354713551425}
   knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 10}
@@ -193,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6220934354038597375}
+  firePoint2: {fileID: 2609306124340958232}
   bulletPrefab: {fileID: 4431559551109896016, guid: 44a9cd32e54a1524ab4692e30fb706c6,
     type: 3}
   animator: {fileID: 6220934353922368660}
@@ -224,7 +255,7 @@ Transform:
   m_LocalScale: {x: 1.5792376, y: 1.0986, z: 1.0986}
   m_Children: []
   m_Father: {fileID: 6220934353922368873}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6220934354038597360
 GameObject:
@@ -286,7 +317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6220934353922368873}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &6220934354713551425
 ParticleSystem:

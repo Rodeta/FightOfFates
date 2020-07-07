@@ -8,6 +8,7 @@ public class Arch : MonoBehaviour
 {
 
     public Transform firePoint;
+    public Transform firePoint2;
     public GameObject arrowPrefab;
     public Animator animator;
     private ArcherPlayerController archerPlayerController;
@@ -16,6 +17,7 @@ public class Arch : MonoBehaviour
     private Button shootButton;
 
     private bool arrowUpdate = UpgradeController.GetArrowUpdate();
+    private bool doubleShoot = UpgradeController.GetDoubleShootUpgrade();
 
 
     private void Start()
@@ -57,6 +59,10 @@ public class Arch : MonoBehaviour
     void StopShootAnimation()
     {
         Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        if (doubleShoot)
+        {
+            Instantiate(arrowPrefab, firePoint2.position, firePoint2.rotation);
+        }
 
         if (arrowUpdate)
         {
