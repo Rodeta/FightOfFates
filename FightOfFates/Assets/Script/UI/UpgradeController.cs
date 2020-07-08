@@ -57,4 +57,9 @@ public class UpgradeController : MonoBehaviour
     {
         return doubleShoot;
     }
+
+    public static void SetDoubleShootUpgrade(bool doubleShoot1)
+    {
+        doubleShoot = doubleShoot1;
+    }
 }

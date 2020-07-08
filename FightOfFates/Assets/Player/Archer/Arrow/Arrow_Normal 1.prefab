@@ -133,8 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b446456ad0ea6da4b98d0d481106fb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 30
   rb: {fileID: 3176786717830484736}
   normal: {fileID: 21300000, guid: 0636ef0288cd127408887a171390f165, type: 3}
   update: {fileID: 21300000, guid: 0af1857deed1b8342aeb61be1cf6c34a, type: 3}
-  arrowUpdate: 1

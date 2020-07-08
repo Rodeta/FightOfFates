@@ -9,9 +9,7 @@ public class SwitchLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("test");
-
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 
 }
