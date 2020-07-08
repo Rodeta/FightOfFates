@@ -4798,7 +4798,7 @@ GameObject:
   - component: {fileID: 141077965215196266}
   - component: {fileID: 141077965215196278}
   - component: {fileID: 141077965215196279}
-  - component: {fileID: 4480666443927072752}
+  - component: {fileID: 4058320206611435691}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -4820,6 +4820,7 @@ Transform:
   - {fileID: 141077964195025849}
   - {fileID: 141077963469692725}
   - {fileID: 8557674784923803002}
+  - {fileID: 2585226483599442483}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4953,7 +4954,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraJumps: 1
   jumpForce: 19
-  maxHealth: 100
   dust: {fileID: 141077963469692723}
   knockbackDuration: 0
   knockbackSpeed: {x: 0, y: 0}
@@ -4964,7 +4964,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 141077965215196278}
---- !u!114 &4480666443927072752
+--- !u!114 &4058320206611435691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4973,10 +4973,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 141077965215196269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ef2c6774de0b94fb7524c80964e022, type: 3}
+  m_Script: {fileID: 11500000, guid: e4acf8f71ea45fc4782e1e187a374c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8557674784923803002}
+  firePoint2: {fileID: 2585226483599442483}
   arrowPrefab: {fileID: 9169595824249073727, guid: 9cf739d7887689246a3d9e2dc1ec77d6,
     type: 3}
   animator: {fileID: 141077965215196278}
@@ -5009,4 +5010,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 141077965215196265}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6850220638544901751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2585226483599442483}
+  m_Layer: 0
+  m_Name: FirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2585226483599442483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850220638544901751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: -0.406, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 141077965215196265}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -8,6 +8,7 @@ public class Arch : MonoBehaviour
 {
 
     public Transform firePoint;
+    public Transform firePoint2;
     public GameObject arrowPrefab;
     public Animator animator;
     private ArcherPlayerController archerPlayerController;
@@ -15,13 +16,15 @@ public class Arch : MonoBehaviour
     private bool animationIsRun;
     private Button shootButton;
 
+    private bool arrowUpdate = UpgradeController.GetArrowUpdate();
+    private bool doubleShoot = UpgradeController.GetDoubleShootUpgrade();
+
 
     private void Start()
     {
         archerPlayerController = GetComponent<ArcherPlayerController>();
         animator = archerPlayerController.animator;
         animationIsRun = false;
-
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
         shootButton.onClick.AddListener(Shoot);
     }
@@ -39,7 +42,15 @@ public class Arch : MonoBehaviour
     // shooting logic
     public void Shoot()
     {
-        animator.SetBool("IsShooting", true);
+        if (arrowUpdate)
+        {
+            animator.SetBool("IsShootingFire", true);
+        }
+        else
+        {
+            animator.SetBool("IsShooting", true);
+        }
+        
 
         animationTime = Time.time;
         animationIsRun = true;
@@ -48,7 +59,19 @@ public class Arch : MonoBehaviour
     void StopShootAnimation()
     {
         Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        animator.SetBool("IsShooting", false);
+        if (doubleShoot)
+        {
+            Instantiate(arrowPrefab, firePoint2.position, firePoint2.rotation);
+        }
+
+        if (arrowUpdate)
+        {
+            animator.SetBool("IsShootingFire", false);
+        }
+        else
+        {
+            animator.SetBool("IsShooting", false);
+        } 
         animationIsRun = false;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Weapon : MonoBehaviour
 {
     public Transform firePoint;
+    public Transform firePoint2;
     public GameObject bulletPrefab;
     public Animator animator;
     private PlayerController playerController;
@@ -12,6 +13,9 @@ public class Weapon : MonoBehaviour
     private bool animationIsRun;
     private Button shootButton;
 
+
+    // update Controller
+    private bool doubleShoot = UpgradeController.GetDoubleShootUpgrade();
 
 
     private void Start()
@@ -22,6 +26,8 @@ public class Weapon : MonoBehaviour
 
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
         shootButton.onClick.AddListener(Shoot);
+
+       
     }
 
 
@@ -31,7 +37,10 @@ public class Weapon : MonoBehaviour
         if(animationTime !=0 && Time.time > animationTime + 0.02f && animationIsRun)
         {
             StopShootAnimation();
-        }     
+        } 
+
+        
+
     }
 
     // shooting logic
@@ -40,13 +49,21 @@ public class Weapon : MonoBehaviour
         animator.SetBool("IsShooting", true); 
         animationTime = Time.time;
         animationIsRun = true;
+
     }
 
-    void StopShootAnimation()
+      void StopShootAnimation()
     {
         Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
+        if (doubleShoot)
+        {
+            Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+        }
+        
         animator.SetBool("IsShooting", false);
         animationIsRun = false;
+
+       
     }
 
 }
