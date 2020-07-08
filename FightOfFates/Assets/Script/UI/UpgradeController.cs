@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    private static bool bulletUpdate = true;
-    private static bool arrowUpdate = true;
+    private static bool bulletUpdate;
+    private static bool arrowUpdate;
 
-    private static bool maxHealthUpgrade= true;
+    private static bool maxHealthUpgrade;
     private static bool smallHealthUpgrade;
 
-    private static bool doubleShoot = true;
+    private static bool doubleShoot;
 
 
     public static bool GetBulletUpdate()
