@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Archer_Shoot
+  m_Name: Archer_Shoot_Jump
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: ea0774d25f19eec4cad34ac13c56017b, type: 3}
+      value: {fileID: 21300000, guid: c0e01dcbc2d9b0740bd83788f61acb63, type: 3}
     - time: 0.14285715
-      value: {fileID: 21300000, guid: a8721b26c9d335d42b15b966629a65fc, type: 3}
+      value: {fileID: 21300000, guid: 1a600261c9e5fee4b8ea06a52113b330, type: 3}
     - time: 0.2857143
-      value: {fileID: 21300000, guid: 0552daa31ebf27d408f50bdf69bb1818, type: 3}
+      value: {fileID: 21300000, guid: c5f7f787a4ebdb9478eba5a3921f7a31, type: 3}
     - time: 0.42857143
-      value: {fileID: 21300000, guid: bef046ba69738334884e1a0dcff35a77, type: 3}
+      value: {fileID: 21300000, guid: 2afcaee6726a73e4da7e73616611c647, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: ea0774d25f19eec4cad34ac13c56017b, type: 3}
-    - {fileID: 21300000, guid: a8721b26c9d335d42b15b966629a65fc, type: 3}
-    - {fileID: 21300000, guid: 0552daa31ebf27d408f50bdf69bb1818, type: 3}
-    - {fileID: 21300000, guid: bef046ba69738334884e1a0dcff35a77, type: 3}
+    - {fileID: 21300000, guid: c0e01dcbc2d9b0740bd83788f61acb63, type: 3}
+    - {fileID: 21300000, guid: 1a600261c9e5fee4b8ea06a52113b330, type: 3}
+    - {fileID: 21300000, guid: c5f7f787a4ebdb9478eba5a3921f7a31, type: 3}
+    - {fileID: 21300000, guid: 2afcaee6726a73e4da7e73616611c647, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
