@@ -4764,10 +4764,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4714910997870899230}
   - component: {fileID: 4714910997870899231}
-  - component: {fileID: 4714910997870899228}
   - component: {fileID: 4714910997870899229}
   - component: {fileID: 4714910997870899217}
   - component: {fileID: 4714910997870899216}
+  - component: {fileID: 4992010940439439581}
   m_Layer: 10
   m_Name: BasicPlayer
   m_TagString: Untagged
@@ -4841,32 +4841,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4714910997870899228
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4714910997870899226}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.09}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 3.2, y: 3.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.81, y: 2.16}
-  m_EdgeRadius: 0
 --- !u!50 &4714910997870899229
 Rigidbody2D:
   serializedVersion: 4
@@ -4902,7 +4876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraJumps: 0
   jumpForce: 19
-  maxHealth: 100
   dust: {fileID: 4714910997761315267}
   knockbackDuration: 0
   knockbackSpeed: {x: 0, y: 0}
@@ -4932,6 +4905,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &4992010940439439581
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714910997870899226}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 899a73838b9243949bccf9febfa91403, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.8724785, y: -0.39118552}
+  - {x: -0.4940896, y: -0.5723734}
+  - {x: -0.85649157, y: -1.0480465}
+  - {x: 0.9433384, y: -1.0465548}
+  - {x: 0.6544628, y: -0.65382487}
+  - {x: 0.6203947, y: -0.59848934}
+  - {x: 0.6865034, y: -0.56640136}
+  - {x: 0.98416805, y: -0.46535373}
+  - {x: 1.0043736, y: -0.009901345}
+  - {x: 0.89627934, y: -0.007562995}
+  - {x: 0.9044218, y: 0.19256681}
+  - {x: 0.8004217, y: 0.26801682}
+  - {x: 0.6809473, y: 0.522421}
+  - {x: 0.6922617, y: 0.9297981}
+  - {x: 0.3756876, y: 1.2075047}
+  - {x: -0.20455074, y: 1.1942327}
+  - {x: -0.38298512, y: 0.9777672}
+  - {x: -0.49002123, y: 0.72817874}
+  - {x: -0.49545765, y: 0.40192747}
+  - {x: -0.7267504, y: 0.25891328}
+  - {x: -0.8930416, y: -0.004226148}
+  - {x: -0.89075756, y: -0.3804434}
 --- !u!1 &4714910998184119982
 GameObject:
   m_ObjectHideFlags: 0
