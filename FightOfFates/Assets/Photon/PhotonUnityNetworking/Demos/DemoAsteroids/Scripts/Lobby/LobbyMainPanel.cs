@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Photon.Pun.Demo.Asteroids
@@ -273,7 +274,9 @@ namespace Photon.Pun.Demo.Asteroids
             Debug.Log(PhotonNetwork.PlayerList.GetValue(1));
 
             //TODO
-            //PhotonNetwork.LoadLevel("SampleScene");
+            PhotonNetwork.LoadLevel("SampleScene");
+            //SceneManager.LoadScene(2);
+            PhotonNetwork.AutomaticallySyncScene = false;
         }
 
         #endregion
