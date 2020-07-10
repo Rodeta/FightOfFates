@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(animationTime !=0 && Time.time > animationTime + 0.02f && animationIsRun)
+        if(animationTime !=0 && Time.time > animationTime + 0.175f && animationIsRun)
         {
             StopShootAnimation();
         } 
