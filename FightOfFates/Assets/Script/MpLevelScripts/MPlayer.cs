@@ -86,7 +86,6 @@ public abstract class MPlayer : MonoBehaviour
 
         jumpButton = GameObject.Find("Jump").GetComponent<Button>();
         jumpButton.onClick.AddListener(jumpMethode);
-
         photonView = GetComponent<PhotonView>();
 
         if (PhotonNetwork.IsMasterClient)
@@ -103,8 +102,10 @@ public abstract class MPlayer : MonoBehaviour
     
     public void jumpMethode()
     {
+        Debug.Log("jump pressed");
         if (photonView.IsMine)
         {
+            Debug.Log("Jump executed");
             CreateDust();
             if (extraJumps > 0)
             {

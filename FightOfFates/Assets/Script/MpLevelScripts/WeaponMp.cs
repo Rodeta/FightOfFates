@@ -10,7 +10,7 @@ public class WeaponMp : MonoBehaviour
     public Transform firePoint2;
     public GameObject bulletPrefab;
     public Animator animator;
-    private PlayerController playerController;
+    private GangsterPlayerController playerController;
     private float animationTime;
     private bool animationIsRun;
     private Button shootButton;
@@ -22,7 +22,7 @@ public class WeaponMp : MonoBehaviour
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<GangsterPlayerController>();
         animator = playerController.animator;
         animationIsRun = false;
 

@@ -13,7 +13,7 @@ public class Bow : MonoBehaviour
     public Transform firePoint2;
     public GameObject arrowPrefab;
     public Animator animator;
-    private ArcherPlayerController archerPlayerController;
+    private ArcherMPlayerController archerPlayerController;
     private float animationTime;
     private bool animationIsRun;
     private Button shootButton;
@@ -25,7 +25,7 @@ public class Bow : MonoBehaviour
 
     private void Start()
     {
-        archerPlayerController = GetComponent<ArcherPlayerController>();
+        archerPlayerController = GetComponent<ArcherMPlayerController>();
         animator = archerPlayerController.animator;
         animationIsRun = false;
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
