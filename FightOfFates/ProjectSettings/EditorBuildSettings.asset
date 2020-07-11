@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SettingsMenu.unity
     guid: fcdd2afe45004e2458c4cbcd37f51321
   - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
     path: Assets/Scenes/JumpAndRun.unity
     guid: 3eda03e6903f07c4ba39b6c3f9a6bc61
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/FinalStage.unity
+    guid: 060e0149647c0644dbbf99e8a60fcec4
   m_configObjects: {}
