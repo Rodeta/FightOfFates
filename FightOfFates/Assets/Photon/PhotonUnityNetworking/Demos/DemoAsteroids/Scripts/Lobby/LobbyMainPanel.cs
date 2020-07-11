@@ -130,6 +130,7 @@ namespace Photon.Pun.Demo.Asteroids
                 
             };
             props.Add(Constance.MONEY, "35");
+            props.Add(Constance.COUNTDOWN_READY, false);
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         }
 
@@ -268,13 +269,14 @@ namespace Photon.Pun.Demo.Asteroids
 
                     Debug.Log("Players money:" + money);
                 }
+                
             }
             Debug.Log(PhotonNetwork.MasterClient);
             Debug.Log(PhotonNetwork.PlayerList.GetValue(0));
             Debug.Log(PhotonNetwork.PlayerList.GetValue(1));
 
             //TODO
-            PhotonNetwork.LoadLevel("SampleScene");
+            PhotonNetwork.LoadLevel("Counter");
             //SceneManager.LoadScene(2);
             PhotonNetwork.AutomaticallySyncScene = false;
         }

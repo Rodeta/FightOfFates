@@ -11,10 +11,12 @@ public class SelectPlayerController : MonoBehaviour
     public GameObject BasicPlayerPrefab;
     public GameObject GangsterPlayerPrefab;
     public GameObject ArcherPlayerPrefab;
+    public static GameObject TextMessage;
 
     // Span Point
     [SerializeField] Transform spanPoint;
 
+    public static GameObject GetPlayer;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class SelectPlayerController : MonoBehaviour
         if(modus == 0)
         {
            player = Instantiate(BasicPlayerPrefab, spanPoint.position, spanPoint.rotation);
+            
         }
         else if(modus == 1)
         {
@@ -40,7 +43,12 @@ public class SelectPlayerController : MonoBehaviour
         }
 
         player.gameObject.name = "Player";
+        GetPlayer = player;
 
+    }
+    public static GameObject ReturnGetPlayer()
+    {
+        return GetPlayer;
     }
 
 }

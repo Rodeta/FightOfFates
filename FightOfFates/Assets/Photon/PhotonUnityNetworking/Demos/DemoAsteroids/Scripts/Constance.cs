@@ -10,6 +10,7 @@ namespace Photon.Pun.Demo.Asteroids
         public const string PLAYER_READY = "IsPlayerReady";
         public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
         public const string MONEY = "PlayersMoney";
+        public const string COUNTDOWN_READY = "CountdownEnd";
 
         public static Color GetColor(int colorChoice)
         {
