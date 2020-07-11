@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public abstract class Player : MonoBehaviour
@@ -82,14 +84,19 @@ public abstract class Player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
         jumpButton = GameObject.Find("Jump").GetComponent<Button>();
-        jumpButton.onClick.AddListener(jumpMethode);
+        EventTrigger jumpEventTrigger =jumpButton.GetComponent<EventTrigger>();
+
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener(jumpMethode);
+        jumpEventTrigger.triggers.Add(pointerDown);
 
         spawnPoint = GameObject.Find("SpawnPoint").transform;
 
     }
- 
+
     //
-    public void jumpMethode()
+    public void jumpMethode(BaseEventData arg0)
     {
         CreateDust();
         if (extraJumps > 0)

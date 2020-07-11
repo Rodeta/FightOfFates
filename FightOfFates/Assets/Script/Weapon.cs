@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
@@ -25,9 +26,13 @@ public class Weapon : MonoBehaviour
         animationIsRun = false;
 
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
-        shootButton.onClick.AddListener(Shoot);
 
-       
+        EventTrigger shootEventTrigger = shootButton.GetComponent<EventTrigger>();
+
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener(Shoot);
+        shootEventTrigger.triggers.Add(pointerDown);
     }
 
 
@@ -44,7 +49,7 @@ public class Weapon : MonoBehaviour
     }
 
     // shooting logic
-    public void Shoot()
+    public void Shoot(BaseEventData arg0)
     {
         animator.SetBool("IsShooting", true); 
         animationTime = Time.time;
