@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Counter.unity
     guid: 175b37944a31ee64695a30104bd90b88
+  - enabled: 1
+    path: Assets/Scenes/FirstShop.unity
+    guid: a3f1a13f84f099044b855409a3664ede
   m_configObjects: {}
