@@ -15,7 +15,6 @@ public class ArcherPlayerController : Player
 
     public Animator animator;
 
-
     void FixedUpdate()
     {
 

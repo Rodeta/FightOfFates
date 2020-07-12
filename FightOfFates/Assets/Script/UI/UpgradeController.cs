@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
+
+    private static bool speedUp;
+    private static bool rapidFire;
+
     private static bool bulletUpdate;
     private static bool arrowUpdate;
 
@@ -11,6 +15,26 @@ public class UpgradeController : MonoBehaviour
 
     private static bool doubleShoot;
 
+
+    public static bool GetSpeedUp()
+    {
+        return speedUp;
+    }
+
+    public static void SetSpeedUp(bool speedUp1)
+    {
+        speedUp = speedUp1;
+    }
+
+    public static bool GetRapidFire()
+    {
+        return rapidFire;
+    }
+
+    public static void SetRapidFire(bool rapidFire1)
+    {
+        rapidFire = rapidFire1;
+    }
 
     public static bool GetBulletUpdate()
     {
