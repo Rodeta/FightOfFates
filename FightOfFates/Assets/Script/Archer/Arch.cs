@@ -1,7 +1,9 @@
 ﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Arch : MonoBehaviour
@@ -26,8 +28,17 @@ public class Arch : MonoBehaviour
         animator = archerPlayerController.animator;
         animationIsRun = false;
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
-        shootButton.onClick.AddListener(Shoot);
+
+        EventTrigger shootEventTrigger = shootButton.GetComponent<EventTrigger>();
+
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener(Shoot);
+        shootEventTrigger.triggers.Add(pointerDown);
+
+       // shootButton.onClick.AddListener(Shoot);
     }
+
 
 
     // Update is called once per frame
@@ -40,7 +51,7 @@ public class Arch : MonoBehaviour
     }
 
     // shooting logic
-    public void Shoot()
+    public void Shoot(BaseEventData arg0)
     {
         if (arrowUpdate)
         {
