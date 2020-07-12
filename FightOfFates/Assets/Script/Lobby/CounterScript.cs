@@ -115,7 +115,7 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
         if (PhotonReady && LocalReady)
         {
             NetworkSend.SendMessage();
-            PhotonNetwork.LoadLevel("SampleScene");
+            PhotonNetwork.LoadLevel("JumpAndRun");
             PhotonNetwork.AutomaticallySyncScene = false;
         }
     }

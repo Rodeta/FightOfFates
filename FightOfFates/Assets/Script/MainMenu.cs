@@ -24,6 +24,6 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLobby()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(9);
     }
 }
