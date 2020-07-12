@@ -133,5 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae18c7dee475f418f0300d64766cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 0075852ef86d9914a8a01ef27903718c, type: 3}
+  update: {fileID: 21300000, guid: 1818ded4190cdc944be1ba1a81f8029e, type: 3}
+  bulletUpdate: 1
   speed: 30
   rb: {fileID: 3200368051560179601}

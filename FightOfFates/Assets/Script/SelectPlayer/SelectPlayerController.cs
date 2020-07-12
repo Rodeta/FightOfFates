@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectPlayerController : MonoBehaviour
 {
 
-    public int modus;
+    private int modus;
    
     public GameObject BasicPlayerPrefab;
     public GameObject GangsterPlayerPrefab;
@@ -13,6 +14,12 @@ public class SelectPlayerController : MonoBehaviour
 
     // Span Point
     [SerializeField] Transform spanPoint;
+
+
+    private void Awake()
+    {
+        modus = SelectPlayerScene.GetModus();
+    }
 
     // Start is called before the first frame update
     void Start()
