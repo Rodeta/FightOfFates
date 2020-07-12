@@ -19,13 +19,13 @@ public class SelectPlayerScene : MonoBehaviour
     {
 
         modus = 1;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(5);
     }
 
     public void SelectArcher()
     {
         modus = 2;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(5);
 
     }
 }
