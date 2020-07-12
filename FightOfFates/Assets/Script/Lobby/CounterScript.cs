@@ -5,66 +5,61 @@ using Photon.Pun.Demo.Asteroids;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CounterScript : MonoBehaviour, IOnEventCallback
 {
-
     public Text TimerText;
-    private int timeRemaining = 400;
+    private int timeRemaining = 300;
     private bool timerIsRunning = false;
-    public Text ErrorMessage;
-    public Text CountdownReady;
-    public Text PhotonPlayer;
-    public Text LocalPlayer;
     private bool LocalReady = false;
     private bool PhotonReady = false;
+    public Slider Slider;
+    public Text DisplayText;
+
+    private float currentValue = 0f;
+    public float CurrentValue
+    {
+        get { return currentValue; }
+        set { currentValue = value;
+            Slider.value = currentValue;
+            DisplayText.text = (Slider.value * 100).ToString("0.00") + "%";
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        CurrentValue = 0f;
         timerIsRunning = true;
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
-    public void UpdateCounter()
-    {
-        TimerText.text = "3";
-        Thread.Sleep(3000);
-        TimerText.text = "2";
-        Thread.Sleep(3000);
-        TimerText.text = "1";
-        Thread.Sleep(3000);
-        TimerText.text = "Game Start";
-        PhotonNetwork.LoadLevel("SampleScene");
-        PhotonNetwork.AutomaticallySyncScene = false;
-
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (timerIsRunning)
         {
+            CurrentValue += 0.0043f;
             if (timeRemaining > 0)
             {
-                ErrorMessage.text = timeRemaining.ToString();
                 switch (timeRemaining)
                 {
-                    case 400:
+                    case 300:
                         TimerText.text = "3";
                         break;
-                    case 300:
+                    case 200:
                         TimerText.text = "2";
 
                         break;
-                    case 200:
+                    case 100:
                         TimerText.text = "1";
 
                         break;
-                    case 100:
+                    case 50:
                         TimerText.text = "Game Starts";
 
                         break;
@@ -75,12 +70,11 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
             }
             else
             {
-                Debug.Log("Time is up");
                 timeRemaining = 0;
                 TimerText.text = "Game Starts";
                 timerIsRunning = false;
+                
                 PhotonNetwork.LocalPlayer.CustomProperties[Constance.COUNTDOWN_READY] = true;
-                CountdownReady.text = "Ready: " + PhotonNetwork.LocalPlayer.CustomProperties[Constance.COUNTDOWN_READY];
                 foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
                 {
                     if (p.Equals(PhotonNetwork.LocalPlayer))
@@ -88,21 +82,33 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
                         ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
                         hash.Add(Constance.COUNTDOWN_READY, true);
                         p.SetCustomProperties(hash);
-                        LocalPlayer.text = p.CustomProperties + "";
                         LocalReady = (bool)p.CustomProperties[Constance.COUNTDOWN_READY];
                     }
                     else
                     {
+                        var sw = new Stopwatch();
+                        sw.Start();
+                        for (int i = 0; ; i++)
+                        {
+                            if (i % 100000 == 0) // if in 100000th iteration (could be any other large number
+                                                 // depending on how often you want the time to be checked) 
+                            {
+                                sw.Stop(); // stop the time measurement
+                                if (sw.ElapsedMilliseconds > 2000) // check if desired period of time has elapsed
+                                {
+                                    break; // if more than 5000 milliseconds have passed, stop looping and return
+                                           // to the existing code
+                                }
+                                else
+                                {
+                                    sw.Start(); // if less than 5000 milliseconds have elapsed, continue looping
+                                                // and resume time measurement
+                                }
+                            }
+                        }
                         PhotonReady = (bool)p.CustomProperties[Constance.COUNTDOWN_READY];
-                        PhotonPlayer.text = p.CustomProperties + "";
                     }
                 }
-
-
-
-
-
-
 
             }
         }
@@ -124,7 +130,6 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
 
             string test = (string)data[0];
 
-            PhotonPlayer.text = test;
             PhotonNetwork.LoadLevel("SampleScene");
             PhotonNetwork.AutomaticallySyncScene = false;
 

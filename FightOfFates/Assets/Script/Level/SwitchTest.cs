@@ -28,14 +28,15 @@ namespace Assets.Script.Level
         public void OnEvent(EventData photonEvent)
         {
             byte eventCode = photonEvent.Code;
-            Debug.Log("Here i am");
             if (eventCode == 1)
             {
+                Debug.Log("Here i am");
                 object[] data = (object[])photonEvent.CustomData;
 
                 string test = (string)data[0];
                 TestButton.GetComponentInChildren<Text>().text = test;
                 Warning.text = test;
+                TestButton.SetActive(true);
                 Warning.enabled = true;
 
             }
