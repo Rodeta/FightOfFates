@@ -110,11 +110,11 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
                     }
                 }
 
+                NetworkSend.SendMessage();
             }
         }
         if (PhotonReady && LocalReady)
         {
-            NetworkSend.SendMessage();
             PhotonNetwork.LoadLevel("JumpAndRun");
             PhotonNetwork.AutomaticallySyncScene = false;
         }
@@ -130,7 +130,7 @@ public class CounterScript : MonoBehaviour, IOnEventCallback
 
             string test = (string)data[0];
 
-            PhotonNetwork.LoadLevel("SampleScene");
+            PhotonNetwork.LoadLevel("JumpAndRun");
             PhotonNetwork.AutomaticallySyncScene = false;
 
         }
