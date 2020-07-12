@@ -14,7 +14,6 @@ public class PlayerController : Player
 
     public Animator animator;
 
-
     void  FixedUpdate()
     {
 

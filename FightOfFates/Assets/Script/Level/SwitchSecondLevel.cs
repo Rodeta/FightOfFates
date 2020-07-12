@@ -17,12 +17,12 @@ public class SwitchSecondLevel : MonoBehaviour
         if(modus == 1)
         {
             // load Gangster Store
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(7);
         }
         else
         {
             // load Archer Store
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(7);
         }
     }
 }

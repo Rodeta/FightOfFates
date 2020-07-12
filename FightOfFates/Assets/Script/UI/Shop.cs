@@ -14,6 +14,18 @@ public class Shop : MonoBehaviour
     }
 
 
+    public void SpeedUp()
+    {
+        UpgradeController.SetSpeedUp(true);
+        // todo load new Scene
+    }
+
+    public void RapidFire()
+    {
+        UpgradeController.SetRapidFire(true);
+        // todo load new Scene
+    }
+
     public void HealthSmall()
     {
         UpgradeController.SetSmallHealthUpgrade(true);
