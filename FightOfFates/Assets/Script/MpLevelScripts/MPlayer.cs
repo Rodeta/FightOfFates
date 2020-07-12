@@ -197,6 +197,7 @@ public abstract class MPlayer : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            Debug.Log("Player died");
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
             this.transform.position = spawnPoint.position;
