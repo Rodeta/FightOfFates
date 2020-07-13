@@ -17,20 +17,20 @@ public class Shop : MonoBehaviour
     public void SpeedUp()
     {
         UpgradeController.SetSpeedUp(true);
-        // todo load new Scene
+        SceneManager.LoadScene(7);
     }
 
     public void RapidFire()
     {
         UpgradeController.SetRapidFire(true);
-        // todo load new Scene
+        SceneManager.LoadScene(7);
     }
-
+    //Todo First
     public void HealthSmall()
     {
         UpgradeController.SetSmallHealthUpgrade(true);
         UpgradeController.SetMaxHealthUpgrade(false);
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(9);
     }
 
     public void DamageSmall()
@@ -43,7 +43,7 @@ public class Shop : MonoBehaviour
         {
             UpgradeController.SetArrowUpdate(true);
         }
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(9);
     }
 
     public void HealthMax()
@@ -51,7 +51,7 @@ public class Shop : MonoBehaviour
 
         UpgradeController.SetSmallHealthUpgrade(false);
         UpgradeController.SetMaxHealthUpgrade(true);
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(9);
     }
 
     public void DamageMax()
@@ -60,6 +60,6 @@ public class Shop : MonoBehaviour
         UpgradeController.SetDoubleShootUpgrade(true);
         UpgradeController.SetArrowUpdate(false);
         UpgradeController.SetBulletUpdate(false);
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(9);
     }
 }

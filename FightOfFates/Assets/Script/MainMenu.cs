@@ -19,11 +19,11 @@ public class MainMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(11);
     }
 
     public void LoadLobby()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(1);
     }
 }
