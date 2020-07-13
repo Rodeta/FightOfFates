@@ -44,7 +44,11 @@ public class Spike : MonoBehaviour
             }
         }
 
-        TackeDamage();
+        if(player != null)
+        {
+            TackeDamage();
+        }
+        
     }
 
 

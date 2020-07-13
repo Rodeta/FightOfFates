@@ -12,7 +12,7 @@ public class BasicEnemyController : MonoBehaviour
     private GameObject player;
     private Player playerController;
 
-    private EdgeCollider2D playerBc;
+    private CapsuleCollider2D playerBc;
 
 
     private bool groundDetected, wallDetected;
@@ -56,19 +56,20 @@ public class BasicEnemyController : MonoBehaviour
         aliveAnim = alive.GetComponent<Animator>();
         currentHealth = maxHealth;
 
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<Player>();
-   
-        playerBc = player.GetComponent<EdgeCollider2D>();
-        aliveBc = alive.GetComponent<BoxCollider2D>();
-
-
-
     }
 
 
     private void Update()
     {
+
+        if(player == null)
+        {
+            player = GameObject.Find("Player");
+            playerController = player.GetComponent<Player>();
+
+            playerBc = player.GetComponent<CapsuleCollider2D>();
+            aliveBc = alive.GetComponent<BoxCollider2D>();
+        }
         
         switch(currentState)
         {
