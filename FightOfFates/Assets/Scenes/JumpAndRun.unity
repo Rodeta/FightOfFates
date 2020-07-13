@@ -13474,7 +13474,7 @@ GameObject:
   - component: {fileID: 871080306}
   - component: {fileID: 871080305}
   - component: {fileID: 871080304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58573,7 +58573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1527888f98ab64445b89c96fd002b7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spike: {fileID: 0}
+  spike: {fileID: 1980225826}
 --- !u!61 &1980225829
 BoxCollider2D:
   m_ObjectHideFlags: 0
