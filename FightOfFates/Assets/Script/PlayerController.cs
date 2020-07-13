@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerController : Player
 {
     public float speed;
+    float updateSpeed = 20;
     private float moveInput;
 
 
@@ -18,6 +19,12 @@ public class PlayerController : Player
     {
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        if (UpgradeController.GetSpeedUp())
+        {
+            speed = updateSpeed;
+        }
+
 
         if (!knockback)
         {

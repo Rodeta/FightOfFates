@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ArcherPlayerController : Player
 {
 
     public float speed;
+    float updatespeed = 20;
     private float moveInput;
 
     public Transform groundCheck;
@@ -19,6 +21,11 @@ public class ArcherPlayerController : Player
     {
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        if (UpgradeController.GetSpeedUp())
+        {
+            speed = updatespeed;
+        }
 
         if (!knockback)
         {
