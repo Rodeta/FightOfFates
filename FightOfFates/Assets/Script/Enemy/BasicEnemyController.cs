@@ -172,7 +172,7 @@ public class BasicEnemyController : MonoBehaviour
             {
                 float[] attackDetails = new float[2];
                 attackDetails[0] = 2f;
-                attackDetails[1] = alive.transform.position.x;
+                attackDetails[1] = 0;
 
                 playerController.DamageWithKnockback(attackDetails);
                 lastAttack = Time.time;
