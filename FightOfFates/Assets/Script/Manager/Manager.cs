@@ -32,8 +32,8 @@ public class Manager : MonoBehaviour
         {
             if (playerController1.currentHealth <= 0)
             {
-               // playerController1.FinishWithLose();
-                 playerController1.FinishWithWin();
+                  playerController1.FinishWithLose();
+                 //playerController1.FinishWithWin();
             }
         }
 
