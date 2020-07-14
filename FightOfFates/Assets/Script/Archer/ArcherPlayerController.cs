@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,30 +19,39 @@ public class ArcherPlayerController : Player
 
     public Animator animator;
 
+    //---------------------- DEATH ----------------
+    private bool loop = false;
+    private bool secondLoop = false;
+    private float deathTime;
+    
+
     void FixedUpdate()
     {
-
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-        if (UpgradeController.GetSpeedUp())
+        if (!finishGame)
         {
-            speed = updatespeed;
-        }
 
-        if (!knockback)
-        {
-            moveInput = joystick.Horizontal;
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-            animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
-        }
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        if (facingRight == false && moveInput > 0)
-        {
-            base.Flip();
-        }
-        else if (facingRight == true && moveInput < 0)
-        {
-            base.Flip();
+            if (UpgradeController.GetSpeedUp())
+            {
+                speed = updatespeed;
+            }
+
+            if (!knockback)
+            {
+                moveInput = joystick.Horizontal;
+                rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+                animator.SetFloat("Speed", Mathf.Abs(moveInput * speed));
+            }
+
+            if (facingRight == false && moveInput > 0)
+            {
+                base.Flip();
+            }
+            else if (facingRight == true && moveInput < 0)
+            {
+                base.Flip();
+            }
         }
 
     }
@@ -49,23 +60,91 @@ public class ArcherPlayerController : Player
     void Update()
     {
 
-        base.smothJump();
-        // this.GetDamage();
-        base.CheckKnockback();
-
-        if (isGrounded == true)
+        if (!finishGame)
         {
-            extraJumps = extraJumpsValue;
-            animator.SetBool("IsGrounded", true);
+            base.smothJump();
+            // this.GetDamage();
+            base.CheckKnockback();
 
+            if (isGrounded == true)
+            {
+                extraJumps = extraJumpsValue;
+                animator.SetBool("IsGrounded", true);
+
+            }
+            else
+            {
+                animator.SetBool("IsGrounded", false);
+
+            }
         }
         else
         {
-            animator.SetBool("IsGrounded", false);
+            if (victory)
+            {
+                Victory();
+                if (deathTime + 1f < Time.time)
+                {
+                    VictoryLoop();
+                }
+            }
+            else
+            {
+                Die();
 
+                if (deathTime + 2f < Time.time)
+                {
+                    DeathDance();
+
+                }
+            }
+           
+        }
+    }
+
+    public void Die()
+    {
+        if (!loop)
+        {
+
+            loop = true;
+            animator.SetBool("IsDead", true);
+            Destroy(this.GetComponent<Rigidbody2D>());
+            Destroy(this.GetComponent<CapsuleCollider2D>());
+            deathTime = Time.time;
         }
     }
 
 
+    public void DeathDance()
+    {
+        Instantiate(coffin, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
+    }
+
+
+    public void Victory()
+    {
+        if (!loop)
+        {
+            loop = true;
+            animator.SetBool("IsWinning", true);
+            Destroy(this.GetComponent<Rigidbody2D>());
+            Destroy(this.GetComponent<CapsuleCollider2D>());
+            deathTime = Time.time;
+        }
+    }
+
+    public void VictoryLoop()
+    {
+        if (!secondLoop)
+        {
+            secondLoop = true;
+            animator.SetBool("IsWinning", false);
+            animator.SetBool("IsWinningLoop", true);
+            
+        }
+        
+    }
 
 }

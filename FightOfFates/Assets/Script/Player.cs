@@ -28,7 +28,7 @@ public abstract class Player : MonoBehaviour
 
 
                        //############################ Health ###############################################
-    protected int currentHealth;
+    public int currentHealth;
     private int maxHealth;
 
     protected Rigidbody2D rb;
@@ -53,11 +53,18 @@ public abstract class Player : MonoBehaviour
     protected Transform spawnPoint;
 
 
+    //--------------------- Finish Game ----------
+
+    protected bool finishGame;
+    protected bool victory = false;
+    public GameObject coffin;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        finishGame = false;
         // Max health upgrade
         if (UpgradeController.GetMaxHealthUpgrade())
         {
@@ -187,6 +194,15 @@ public abstract class Player : MonoBehaviour
 
     void CheckDeath()
     {
+        try
+        {
+            GameObject.Find("Manager");
+            return;
+        }
+        catch(Exception e)
+        {
+            
+        }
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
@@ -201,5 +217,17 @@ public abstract class Player : MonoBehaviour
         dust.Play();
     }
 
+    public void FinishWithLose()
+    {
+        finishGame = true;
+    }
 
+    public void FinishWithWin()
+    {
+        finishGame = true;
+        victory = true;
+
+
+}
+       
 }
