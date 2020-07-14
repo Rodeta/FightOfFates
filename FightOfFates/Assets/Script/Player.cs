@@ -13,6 +13,7 @@ public abstract class Player : MonoBehaviour
     protected Joystick joystick;
     protected HealthBar healthBar;
     protected Button jumpButton;
+    
 
 
 

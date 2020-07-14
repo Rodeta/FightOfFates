@@ -108,6 +108,8 @@ public class ArcherPlayerController : Player
         {
 
             loop = true;
+            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+            musicSelector.startMemeMusic();
             animator.SetBool("IsDead", true);
             Destroy(this.GetComponent<Rigidbody2D>());
             Destroy(this.GetComponent<CapsuleCollider2D>());
@@ -128,6 +130,8 @@ public class ArcherPlayerController : Player
         if (!loop)
         {
             loop = true;
+            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+            musicSelector.startQueen();
             animator.SetBool("IsWinning", true);
             Destroy(this.GetComponent<Rigidbody2D>());
             Destroy(this.GetComponent<CapsuleCollider2D>());
