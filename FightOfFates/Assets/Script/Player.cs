@@ -195,14 +195,11 @@ public abstract class Player : MonoBehaviour
 
     void CheckDeath()
     {
-        try
+        
+       
+        if(GameObject.Find("Manager") != null)
         {
-            GameObject.Find("Manager");
             return;
-        }
-        catch(Exception e)
-        {
-            
         }
         if (currentHealth <= 0)
         {
