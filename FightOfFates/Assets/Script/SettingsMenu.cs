@@ -1,42 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Chat.UtilityScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class SettingsMenu : MonoBehaviour
 {
-    private bool isMuted;
-    UnityEngine.UI.Button MuteButton;
-    
-    void Start()
+
+    public Button sound;
+    public Sprite mute;
+    public Sprite unmute;
+
+
+    private void Start()
     {
-        isMuted = false;
-        AudioListener.pause = isMuted;
-        Sprite Unmuted = Resources.Load<Sprite>("Unmuted");
-        Sprite Muted = Resources.Load<Sprite>("Muted");
+        if (UpgradeController.GetSoundStatus()==0)
+        {
+            sound.GetComponent<Image>().sprite = unmute;
+        }
+        else
+        {
+            sound.GetComponent<Image>().sprite = mute;
+        }
+        
     }
-    
 
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }
 
-    public void MutePressed()
+
+    public void ToggleSound()
     {
-        isMuted = !isMuted;
-         AudioListener.pause = isMuted;
-        if (isMuted) {
-            //MuteButton.GetComponent<Image>().sprite = Unmuted;
+        if (UpgradeController.GetSoundStatus() == 0)
+        {
+            sound.GetComponent<Image>().sprite = mute;
+            UpgradeController.SetSoundStatus(1);
+
         }
         else
         {
-            //MuteButton.GetComponent<Image>().sprite = Muted;
+            sound.GetComponent<Image>().sprite = unmute;
+            UpgradeController.SetSoundStatus(0);
         }
-       
-
-        // PlayerPrefs.SetInt("MUTED", isMuted ? 1 : 0);
     }
-   
 }

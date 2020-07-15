@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene(11);
+        SceneManager.LoadScene(10);
     }
 
     public void LoadLobby()
