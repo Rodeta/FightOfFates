@@ -63,10 +63,13 @@ public class Bow : MonoBehaviour
 
     void StopShootAnimation()
     {
-        PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint.position, Quaternion.identity, 0);
-        if (doubleShoot)
+        if (photonView.IsMine)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint2.position, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint.position, Quaternion.identity, 0);
+            if (doubleShoot)
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint2.position, Quaternion.identity, 0);
+            }
         }
 
         if (arrowUpdate)

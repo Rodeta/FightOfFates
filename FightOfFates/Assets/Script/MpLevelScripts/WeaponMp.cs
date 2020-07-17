@@ -59,16 +59,17 @@ public class WeaponMp : MonoBehaviour
       void StopShootAnimation()
     {
         //Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
-        PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Bullet"), firePoint.position, Quaternion.identity, 0);
-        if (doubleShoot)
+        if (photonView.IsMine)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Bullet"), firePoint2.position, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Bullet"), firePoint.position, Quaternion.identity, 0);
+            if (doubleShoot)
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Bullet"), firePoint2.position, Quaternion.identity, 0);
+            }
         }
         
         animator.SetBool("IsShooting", false);
         animationIsRun = false;
-
-       
     }
 
 }

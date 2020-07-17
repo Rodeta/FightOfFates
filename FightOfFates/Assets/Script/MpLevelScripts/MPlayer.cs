@@ -149,7 +149,10 @@ public abstract class MPlayer : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if (photonView.IsMine)
+        {
+            healthBar.SetHealth(currentHealth);
+        }
         this.CheckDeath();
     }
 
