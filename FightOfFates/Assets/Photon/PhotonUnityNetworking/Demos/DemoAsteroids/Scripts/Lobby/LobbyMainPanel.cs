@@ -269,8 +269,11 @@ namespace Photon.Pun.Demo.Asteroids
 
                     Debug.Log("Players money:" + money);
                 }
-                
+                ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+                hash.Add(Constance.PLAYERISFIRST, 2);
+                p.SetCustomProperties(hash);
             }
+            
             Debug.Log(PhotonNetwork.MasterClient);
             Debug.Log(PhotonNetwork.PlayerList.GetValue(0));
             Debug.Log(PhotonNetwork.PlayerList.GetValue(1));

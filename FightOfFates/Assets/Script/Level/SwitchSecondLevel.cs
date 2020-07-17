@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Script.Lobby;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,9 @@ public class SwitchSecondLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(modus == 1)
+        
+
+        if (modus == 1)
         {
             // load Gangster Store
             SceneManager.LoadScene(8);
@@ -25,4 +28,5 @@ public class SwitchSecondLevel : MonoBehaviour
             SceneManager.LoadScene(8);
         }
     }
+    
 }

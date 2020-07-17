@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4443102733965220085}
   - component: {fileID: 6575495221494682163}
   m_Layer: 10
-  m_Name: Gangster 1
+  m_Name: Gangster
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
