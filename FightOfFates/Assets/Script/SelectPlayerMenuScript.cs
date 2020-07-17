@@ -46,7 +46,7 @@ public class SelectPlayerMenuScript : MonoBehaviour, IOnEventCallback
         }
         else
         {
-            
+            NetworkSend.FirstPlayer();
             // Archer Store
             leftBot.GetComponent<Image>().sprite = arrowUpgrade;
             rightBot.GetComponent<Image>().sprite = arrowDouble;
