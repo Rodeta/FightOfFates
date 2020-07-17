@@ -500,10 +500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d3dc1c3746a7e47a80d50f892b6193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftTop: {fileID: 1707667995}
-  leftBot: {fileID: 503908193}
-  rightTop: {fileID: 2119415445}
-  rightBot: {fileID: 581677862}
+  leftTop: {fileID: 1707667993}
+  leftBot: {fileID: 503908191}
+  rightTop: {fileID: 2119415443}
+  rightBot: {fileID: 581677860}
   arrowUpgrade: {fileID: 21300000, guid: da6b1a29c22442c4bb5cdc838e111f5f, type: 3}
   bulletUpgrade: {fileID: 21300000, guid: e6411565105b0f442aea60a15d94dfd2, type: 3}
   smallHealth: {fileID: 21300000, guid: 346f61925c7f5d841a42936452d864a3, type: 3}
