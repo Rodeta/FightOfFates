@@ -29,7 +29,20 @@ public class BulletMp : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = normal;
         }
 
-        rb.velocity = transform.right * speed;
+        //rb.velocity = transform.right * speed;
+    }
+
+    public void SetDirection(bool facingRight)
+    {
+        if (facingRight)
+        {
+            rb.velocity = transform.right * speed;
+        }
+        else
+        {
+            rb.velocity = -transform.right * speed;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
