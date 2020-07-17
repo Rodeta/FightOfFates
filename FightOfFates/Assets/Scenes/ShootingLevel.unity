@@ -13488,6 +13488,8 @@ MonoBehaviour:
     type: 3}
   GangsterPlayerPrefab: {fileID: 6220934353922368874, guid: afbd29ee27787b7499dda5cabd881c12,
     type: 3}
+  Gangster2PlayerPrefab: {fileID: 826753245819346238, guid: d82f438f6e581364a9fb40f217a3866a,
+    type: 3}
   ArcherPlayerPrefab: {fileID: 141077965215196269, guid: ae98bb651fdec3b4c9317d43f6e8e857,
     type: 3}
   spanPoint: {fileID: 796070881}
