@@ -167,7 +167,7 @@ public abstract class Player : MonoBehaviour
             direction = -1;
         }
         Knockback(direction);
-        TakeDamage(10);
+        TakeDamage(20);
     }
 
 
