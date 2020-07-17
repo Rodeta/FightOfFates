@@ -4928,9 +4928,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraJumps: 1
   jumpForce: 19
+  currentHealth: 0
   dust: {fileID: 141077963469692723}
   knockbackDuration: 0
   knockbackSpeed: {x: 0, y: 0}
+  coffin: {fileID: 7287170693886455448, guid: 9c8a9ba5cade2584697d81b588ff4013, type: 3}
   speed: 15
   groundCheck: {fileID: 141077964195025849}
   checkRadius: 0.5

@@ -29,6 +29,11 @@ public class Bullet : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = normal;
         }
 
+        if (UpgradeController.GetRapidFire())
+        {
+            speed += 8;
+        }
+
         rb.velocity = transform.right * speed;
     }
 

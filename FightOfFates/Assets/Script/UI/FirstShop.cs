@@ -23,7 +23,6 @@ public class FirstShop : MonoBehaviour
         if (SelectPlayerScene.GetModus() == 1)
         {
             bot.GetComponent<Image>().sprite = rapidFireGangster;
-            SceneManager.LoadScene(6);
         }
         else
         {

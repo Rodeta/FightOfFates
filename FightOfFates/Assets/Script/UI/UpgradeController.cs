@@ -16,6 +16,10 @@ public class UpgradeController : MonoBehaviour
     private static bool doubleShoot;
 
 
+    // Sound Status
+    private static int soundStatus;
+
+
     public static bool GetSpeedUp()
     {
         return speedUp;
@@ -86,4 +90,20 @@ public class UpgradeController : MonoBehaviour
     {
         doubleShoot = doubleShoot1;
     }
+
+
+
+
+
+    // Sound Status
+    public static void SetSoundStatus(int soundStatus1)
+    {
+        soundStatus = soundStatus1;
+    }
+
+    public static int GetSoundStatus()
+    {
+        return soundStatus;
+    }
+
 }
