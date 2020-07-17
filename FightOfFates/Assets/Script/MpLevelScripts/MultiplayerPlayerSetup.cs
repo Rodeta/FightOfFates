@@ -34,7 +34,9 @@ public class MultiplayerPlayerSetup : MonoBehaviour
         }
         else
         {
-            player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Archer"), spawnPoint.position, Quaternion.identity, 0);
+            //player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Archer"), spawnPoint.position, Quaternion.identity, 0);
+            player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Gangster"), spawnPoint.position, Quaternion.identity, 0);
+
         }
 
         //Different Names for Camera Follow

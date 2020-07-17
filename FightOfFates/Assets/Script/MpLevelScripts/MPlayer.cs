@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Photon.Pun.PhotonAnimatorView;
 
 public abstract class MPlayer : MonoBehaviour
 {
@@ -56,9 +58,16 @@ public abstract class MPlayer : MonoBehaviour
 
     protected PhotonView photonView;
 
+    //--------------------- Finish Game ----------
+
+    protected bool finishGame;
+    protected bool victory = false;
+    public GameObject coffin;
+
     // Start is called before the first frame update
     void Start()
     {
+        finishGame = false;
         // Max health upgrade
         if (UpgradeController.GetMaxHealthUpgrade())
         {
@@ -85,7 +94,11 @@ public abstract class MPlayer : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
         jumpButton = GameObject.Find("Jump").GetComponent<Button>();
-        jumpButton.onClick.AddListener(jumpMethode);
+        EventTrigger jumpEventTrigger = jumpButton.GetComponent<EventTrigger>();
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener(jumpMethode);
+        jumpEventTrigger.triggers.Add(pointerDown);
         photonView = GetComponent<PhotonView>();
 
         if (PhotonNetwork.IsMasterClient)
@@ -97,15 +110,21 @@ public abstract class MPlayer : MonoBehaviour
             spawnPoint = GameObject.Find("SpawnPoint 2").transform;
         }
 
+        //set all Synchronized Parameter mode to continous
+        PhotonAnimatorView photonAnimator = GetComponent<PhotonAnimatorView>();
+        List<SynchronizedParameter> parameters = photonAnimator.GetSynchronizedParameters();
+        foreach(SynchronizedParameter parameter in parameters)
+        {
+            photonAnimator.SetParameterSynchronized(parameter.Name, parameter.Type, SynchronizeType.Continuous);
+        }
+
     }
- 
-    
-    public void jumpMethode()
+
+
+    public void jumpMethode(BaseEventData arg0)
     {
-        Debug.Log("jump pressed");
         if (photonView.IsMine)
         {
-            Debug.Log("Jump executed");
             CreateDust();
             if (extraJumps > 0)
             {
@@ -198,9 +217,12 @@ public abstract class MPlayer : MonoBehaviour
 
     void CheckDeath()
     {
+        if (GameObject.Find("Manager") != null)
+        {
+            return;
+        }
         if (currentHealth <= 0)
         {
-            Debug.Log("Player died");
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
             this.transform.position = spawnPoint.position;
@@ -211,5 +233,21 @@ public abstract class MPlayer : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+    public void FinishWithLose()
+    {
+        finishGame = true;
+    }
+    public void FinishWithWin()
+    {
+        finishGame = true;
+        victory = true;
+
+
+    }
+
+    public bool getFacingRight()
+    {
+        return facingRight;
     }
 }

@@ -23,6 +23,8 @@ public class Bow : MonoBehaviour
 
     private PhotonView photonView;
 
+    private bool facingRight;
+
     private void Start()
     {
         archerPlayerController = GetComponent<ArcherMPlayerController>();
@@ -31,12 +33,14 @@ public class Bow : MonoBehaviour
         shootButton = GameObject.Find("Shoot").GetComponent<Button>();
         shootButton.onClick.AddListener(Shoot);
         photonView = GetComponent<PhotonView>();
+        facingRight = archerPlayerController.getFacingRight();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        facingRight = archerPlayerController.getFacingRight();
         if (animationTime != 0 && Time.time > animationTime + 0.9f && animationIsRun)
         {
             StopShootAnimation();
@@ -65,10 +69,13 @@ public class Bow : MonoBehaviour
     {
         if (photonView.IsMine)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint.position, Quaternion.identity, 0);
+            facingRight = archerPlayerController.getFacingRight();
+            GameObject arrow1= PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint.position, Quaternion.identity, 0);
+            arrow1.GetComponent<ArrowMp>().SetDirection(facingRight);
             if (doubleShoot)
             {
-                PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint2.position, Quaternion.identity, 0);
+                GameObject arrow2 = PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint2.position, Quaternion.identity, 0);
+                arrow2.GetComponent<ArrowMp>().SetDirection(facingRight);
             }
         }
 
