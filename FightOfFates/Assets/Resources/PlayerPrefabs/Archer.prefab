@@ -5064,7 +5064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 195792321698737842}
   firePoint2: {fileID: 6311229996023804411}
-  arrowPrefab: {fileID: 9169595824249073727, guid: 8666ed186bd640740874c21e66717f0c,
+  arrowPrefab: {fileID: 8232889808105190977, guid: a51416b1a3937db418faab3e2649d509,
     type: 3}
   animator: {fileID: 8466866656551901118}
 --- !u!70 &821134805476864871
