@@ -15351,6 +15351,8 @@ MonoBehaviour:
     type: 3}
   ArcherPlayerPrefab: {fileID: 141077965215196269, guid: ae98bb651fdec3b4c9317d43f6e8e857,
     type: 3}
+  Archer2PlayerPrefab: {fileID: 1626167085453565825, guid: f8b6d3df8a7bcef4e9fba8376c0b6b5e,
+    type: 3}
   spanPoint: {fileID: 796070881}
 --- !u!1 &1302806335
 GameObject:
