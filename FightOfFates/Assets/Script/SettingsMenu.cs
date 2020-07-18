@@ -11,16 +11,21 @@ public class SettingsMenu : MonoBehaviour
     public Sprite mute;
     public Sprite unmute;
 
+    public AudioSource menuSound;
+
 
     private void Start()
     {
         if (UpgradeController.GetSoundStatus()==0)
         {
             sound.GetComponent<Image>().sprite = unmute;
+            StartMenuSound();
+
         }
         else
         {
             sound.GetComponent<Image>().sprite = mute;
+            StopMenuSound();
         }
         
     }
@@ -37,12 +42,26 @@ public class SettingsMenu : MonoBehaviour
         {
             sound.GetComponent<Image>().sprite = mute;
             UpgradeController.SetSoundStatus(1);
+            StartMenuSound();
 
         }
         else
         {
             sound.GetComponent<Image>().sprite = unmute;
             UpgradeController.SetSoundStatus(0);
+            StopMenuSound();
         }
+    }
+
+
+
+    public void StartMenuSound()
+    {
+        menuSound.Play();
+    }
+
+    public void StopMenuSound()
+    {
+        menuSound.Stop();
     }
 }
