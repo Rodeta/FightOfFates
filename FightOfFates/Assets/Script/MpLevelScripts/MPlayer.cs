@@ -117,7 +117,6 @@ public abstract class MPlayer : MonoBehaviour
         {
             photonAnimator.SetParameterSynchronized(parameter.Name, parameter.Type, SynchronizeType.Continuous);
         }
-
     }
 
 
