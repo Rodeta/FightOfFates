@@ -7,12 +7,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SwitchFromShootingLevel : MonoBehaviour, IOnEventCallback
+public class SwitchFromSecondShootingLevel : MonoBehaviour, IOnEventCallback
 {
     public Text EnemyMessage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        NetworkSend.SendEnemyMessage2();
+        NetworkSend.SendEnemyMessage3();
         SceneManager.LoadScene(11);
     }
 
@@ -20,7 +20,7 @@ public class SwitchFromShootingLevel : MonoBehaviour, IOnEventCallback
     {
         byte eventCode = photonEvent.Code;
 
-        if (eventCode == 100)
+        if (eventCode == 120)
         {
             object[] data = (object[])photonEvent.CustomData;
 

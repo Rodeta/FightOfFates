@@ -35,6 +35,12 @@ namespace Assets.Script.Lobby
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent(100, content, raiseEventOptions, SendOptions.SendReliable);
         }
+        public static void SendEnemyMessage3()
+        {
+            object[] content = new object[] { "Enemy proceeded to the final stage" };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(120, content, raiseEventOptions, SendOptions.SendReliable);
+        }
 
         public static void FirstPlayer()
         {
