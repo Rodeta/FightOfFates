@@ -10,6 +10,7 @@ public class SelectPlayerController : MonoBehaviour
    
     public GameObject BasicPlayerPrefab;
     public GameObject GangsterPlayerPrefab;
+    public GameObject Gangster2PlayerPrefab;
     public GameObject ArcherPlayerPrefab;
     public static GameObject TextMessage;
 
