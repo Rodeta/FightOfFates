@@ -84,6 +84,11 @@ namespace Assets.Script.Lobby
             
         }
 
-
+        public static void ReInstantiateOtherPlayer()
+        {
+            object[] content = new object[] { };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(4, content, raiseEventOptions, SendOptions.SendReliable);
+        }
     }
 }
