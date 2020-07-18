@@ -18,13 +18,13 @@ public class Shop : MonoBehaviour
     public void SpeedUp()
     {
         UpgradeController.SetSpeedUp(true);
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(11);
     }
 
     public void RapidFire()
     {
         UpgradeController.SetRapidFire(true);
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(11);
     }
     //Todo First
     public void HealthSmall()

@@ -13,7 +13,7 @@ public class SwitchFromShootingLevel : MonoBehaviour, IOnEventCallback
     private void OnTriggerEnter2D(Collider2D collision)
     {
         NetworkSend.SendEnemyMessage2();
-        SceneManager.LoadScene(11);
+        SceneManager.LoadScene(6);
     }
 
     public void OnEvent(EventData photonEvent)
