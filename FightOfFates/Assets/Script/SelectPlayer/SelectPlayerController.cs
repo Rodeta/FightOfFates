@@ -37,11 +37,28 @@ public class SelectPlayerController : MonoBehaviour
         }
         else if(modus == 1)
         {
-           player = Instantiate(GangsterPlayerPrefab, spanPoint.position, spanPoint.rotation);
+          
+            if (PhotonNetwork.IsMasterClient)
+            {
+                player = Instantiate(GangsterPlayerPrefab, spanPoint.position, spanPoint.rotation);
+            }
+            else
+            {
+                player = Instantiate(Gangster2PlayerPrefab, spanPoint.position, spanPoint.rotation);
+            }
         }
         else
         {
-           player =  Instantiate(ArcherPlayerPrefab, spanPoint.position, spanPoint.rotation);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                player = Instantiate(ArcherPlayerPrefab, spanPoint.position, spanPoint.rotation);
+            }
+            else
+            {
+                player = Instantiate(Archer2PlayerPrefab, spanPoint.position, spanPoint.rotation);
+
+            }
+            
         }
 
         player.gameObject.name = "Player";
