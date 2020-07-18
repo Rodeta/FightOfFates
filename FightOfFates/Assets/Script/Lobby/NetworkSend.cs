@@ -25,9 +25,15 @@ namespace Assets.Script.Lobby
 
         public static void SendEnemyMessage()
         {
-            object[] content = new object[] { "Hurry up!" };
+            object[] content = new object[] { "Enemy proceeded to the second stage" };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent(1, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+        public static void SendEnemyMessage2()
+        {
+            object[] content = new object[] { "Enemy proceeded to the third stage" };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(100, content, raiseEventOptions, SendOptions.SendReliable);
         }
 
         public static void FirstPlayer()
