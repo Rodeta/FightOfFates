@@ -9,7 +9,6 @@ public class AmbienteSelector : MonoBehaviour
 
     private void Start()
     {
-        print(UpgradeController.GetSoundStatus());
         if (UpgradeController.GetSoundStatus() == 0)
         {
             StartAmiente();

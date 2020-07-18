@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectPlayerMenu.unity
     guid: d74e58efba727c64d925c8f19c32d2ef
   - enabled: 1
+    path: Assets/Scenes/ShootingLevelTwo.unity
+    guid: 73a2e00583f0dec40bbf819cffdd4aea
+  - enabled: 1
     path: Assets/Scenes/ShootingLevel.unity
     guid: 993fc4acb79a31a4092960154a54357e
   - enabled: 1
