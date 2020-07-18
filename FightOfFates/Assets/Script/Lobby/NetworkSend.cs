@@ -25,9 +25,21 @@ namespace Assets.Script.Lobby
 
         public static void SendEnemyMessage()
         {
-            object[] content = new object[] { "Hurry up!" };
+            object[] content = new object[] { "Enemy proceeded to the second stage" };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent(1, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+        public static void SendEnemyMessage2()
+        {
+            object[] content = new object[] { "Enemy proceeded to the third stage" };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(100, content, raiseEventOptions, SendOptions.SendReliable);
+        }
+        public static void SendEnemyMessage3()
+        {
+            object[] content = new object[] { "Enemy proceeded to the final stage" };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(120, content, raiseEventOptions, SendOptions.SendReliable);
         }
 
         public static void FirstPlayer()
@@ -69,8 +81,7 @@ namespace Assets.Script.Lobby
                 {
                     SecondPlayer();
                 }
-            }
-                
+            }             
             
             
         }
@@ -83,12 +94,13 @@ namespace Assets.Script.Lobby
             PhotonNetwork.RaiseEvent(3, content, raiseEventOptions, SendOptions.SendReliable);
             
         }
-
         public static void SendEnd()
         {
             object[] content = new object[] { };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent(5, content, raiseEventOptions, SendOptions.SendReliable);
+
+
 
         }
 

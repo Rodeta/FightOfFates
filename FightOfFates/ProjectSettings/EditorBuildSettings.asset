@@ -39,9 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SettingsMenu.unity
     guid: fcdd2afe45004e2458c4cbcd37f51321
   - enabled: 1
-    path: Assets/Scenes/End/Defeat.unity
-    guid: f2ba36e1ae2b0be4aa92a84cbc758678
-  - enabled: 1
-    path: Assets/Scenes/End/Victory.unity
-    guid: a0ecbfa147f2d5f4ba4d90bd36dbb524
+    path: Assets/Scenes/ShootingLevelTwo.unity
+    guid: 73a2e00583f0dec40bbf819cffdd4aea
   m_configObjects: {}
