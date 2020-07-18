@@ -81,11 +81,27 @@ public class MultiplayerPlayerSetup : MonoBehaviour, IOnEventCallback
         //Instantiate correct prefab
         if (modus == 1)
         {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "other", "Gangster"), spawnPoint.position, Quaternion.identity, 0);
+            }
+            else
+            {
+
             player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Gangster"), spawnPoint.position, Quaternion.identity, 0);
+            }
         }
         else
         {
-            player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Archer"), spawnPoint.position, Quaternion.identity, 0);
+            if (!PhotonNetwork.IsMasterClient)
+            {
+
+            player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "other", "Archer"), spawnPoint.position, Quaternion.identity, 0);
+            }
+            else
+            {
+                player = PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Archer"), spawnPoint.position, Quaternion.identity, 0);
+            }
         }
 
         //Different Names for Camera Follow

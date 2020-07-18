@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraJumps: 1
   jumpForce: 19
+  currentHealth: 0
   dust: {fileID: 6018054540330146383}
   knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 10}

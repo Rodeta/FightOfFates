@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using System.IO;
+using UnityEngine.SceneManagement;
+using System.Diagnostics;
 
 public class GangsterPlayerController : MPlayer
 {
@@ -104,11 +108,12 @@ public class GangsterPlayerController : MPlayer
         {
 
             loop = true;
-            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
-            musicSelector.startMemeMusic();
+            if (photonView.IsMine)
+            {
+                MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+                musicSelector.startMemeMusic();
+            }  
             animator.SetBool("IsDead", true);
-            Destroy(this.GetComponent<Rigidbody2D>());
-            Destroy(this.GetComponent<CapsuleCollider2D>());
             deathTime = Time.time;
         }
     }
@@ -116,7 +121,11 @@ public class GangsterPlayerController : MPlayer
 
     public void DeathDance()
     {
-        Instantiate(coffin, gameObject.transform.position, gameObject.transform.rotation);
+        // Instantiate(coffin, gameObject.transform.position, gameObject.transform.rotation);
+        if (photonView.IsMine)
+        {
+             PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Coffin"), gameObject.transform.position, gameObject.transform.rotation, 0);
+        }
         Destroy(gameObject);
     }
 
@@ -126,11 +135,14 @@ public class GangsterPlayerController : MPlayer
         if (!loop)
         {
             loop = true;
-            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
-            musicSelector.startQueen();
+
+            if (photonView.IsMine)
+            {
+                MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+                musicSelector.startQueen();
+            }
+            
             animator.SetBool("IsWinning", true);
-            Destroy(this.GetComponent<Rigidbody2D>());
-            Destroy(this.GetComponent<CapsuleCollider2D>());
             deathTime = Time.time;
         }
     }
@@ -144,6 +156,7 @@ public class GangsterPlayerController : MPlayer
             animator.SetBool("IsWinningLoop", true);
 
         }
-
     }
+
+
 }

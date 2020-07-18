@@ -106,4 +106,21 @@ public class UpgradeController : MonoBehaviour
         return soundStatus;
     }
 
+    public static void SetAll(bool all)
+    {
+        speedUp = all;
+        rapidFire = all;
+
+        bulletUpdate = all;
+        arrowUpdate = all;
+
+
+        maxHealthUpgrade = all;
+        smallHealthUpgrade = all;
+
+        doubleShoot = all;
+
+    }
+
+
 }

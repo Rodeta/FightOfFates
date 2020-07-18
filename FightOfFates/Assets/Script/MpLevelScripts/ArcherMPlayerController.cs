@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
+using UnityEngine.SceneManagement;
+using System.Diagnostics;
+using System.Timers;
 
 public class ArcherMPlayerController : MPlayer
 {
@@ -20,6 +25,8 @@ public class ArcherMPlayerController : MPlayer
     private bool loop = false;
     private bool secondLoop = false;
     private float deathTime;
+
+    private  Timer aTimer;
 
     void FixedUpdate()
     {        
@@ -106,11 +113,13 @@ public class ArcherMPlayerController : MPlayer
         {
 
             loop = true;
-            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
-            musicSelector.startMemeMusic();
+            if (photonView.IsMine)
+            {
+                MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+                musicSelector.startMemeMusic();
+            }
+            
             animator.SetBool("IsDead", true);
-            Destroy(this.GetComponent<Rigidbody2D>());
-            Destroy(this.GetComponent<CapsuleCollider2D>());
             deathTime = Time.time;
         }
     }
@@ -118,8 +127,15 @@ public class ArcherMPlayerController : MPlayer
 
     public void DeathDance()
     {
-        Instantiate(coffin, gameObject.transform.position, gameObject.transform.rotation);
+        // Instantiate(coffin, gameObject.transform.position, gameObject.transform.rotation);
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Coffin"), gameObject.transform.position, gameObject.transform.rotation, 0);
+        }
+       
         Destroy(gameObject);
+
+       
     }
 
 
@@ -128,11 +144,12 @@ public class ArcherMPlayerController : MPlayer
         if (!loop)
         {
             loop = true;
-            MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
-            musicSelector.startQueen();
+            if (photonView.IsMine)
+            {
+                MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+                musicSelector.startQueen();
+            }  
             animator.SetBool("IsWinning", true);
-            Destroy(this.GetComponent<Rigidbody2D>());
-            Destroy(this.GetComponent<CapsuleCollider2D>());
             deathTime = Time.time;
         }
     }
@@ -145,8 +162,7 @@ public class ArcherMPlayerController : MPlayer
             animator.SetBool("IsWinning", false);
             animator.SetBool("IsWinningLoop", true);
 
-        }
+        } 
 
     }
-
 }

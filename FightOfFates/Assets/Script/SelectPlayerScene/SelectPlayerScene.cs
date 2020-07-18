@@ -14,6 +14,10 @@ public class SelectPlayerScene : MonoBehaviour
         return modus;
     }
 
+    public static void SetModus(int modus1){
+        modus = modus1;
+    }
+
 
     public void SelectGangster()
     {

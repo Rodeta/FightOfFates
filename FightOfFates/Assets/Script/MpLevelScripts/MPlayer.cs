@@ -1,12 +1,15 @@
-﻿using Photon.Pun;
+﻿using Assets.Script.Lobby;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Photon.Pun.PhotonAnimatorView;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 
-public abstract class MPlayer : MonoBehaviour
+public abstract class MPlayer : MonoBehaviour, IOnEventCallback
 {
 
 
@@ -29,7 +32,7 @@ public abstract class MPlayer : MonoBehaviour
 
 
                        //############################ Health ###############################################
-    protected int currentHealth;
+    public int currentHealth;
     private int maxHealth;
 
     protected Rigidbody2D rb;
@@ -60,9 +63,14 @@ public abstract class MPlayer : MonoBehaviour
 
     //--------------------- Finish Game ----------
 
-    protected bool finishGame;
+    protected bool finishGame = false;
+    protected bool lost = false;
     protected bool victory = false;
     public GameObject coffin;
+
+
+
+  
 
     // Start is called before the first frame update
     void Start()
@@ -216,15 +224,13 @@ public abstract class MPlayer : MonoBehaviour
 
     void CheckDeath()
     {
-        if (GameObject.Find("Manager") != null)
-        {
-            return;
-        }
+      
         if (currentHealth <= 0)
         {
-            currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
-            this.transform.position = spawnPoint.position;
+            finishGame = true;
+            lost = true;
+
+            NetworkSend.SendEnd();
         }
     }
 
@@ -248,5 +254,33 @@ public abstract class MPlayer : MonoBehaviour
     public bool getFacingRight()
     {
         return facingRight;
+    }
+
+
+
+
+
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+        if (eventCode == 5)
+        {
+            if (!lost)
+            {
+                finishGame = true;
+                victory = true;
+            }
+        }
+    }
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
     }
 }
