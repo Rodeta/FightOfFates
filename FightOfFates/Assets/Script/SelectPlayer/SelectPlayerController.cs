@@ -10,7 +10,9 @@ public class SelectPlayerController : MonoBehaviour
    
     public GameObject BasicPlayerPrefab;
     public GameObject GangsterPlayerPrefab;
+    public GameObject Gangster2PlayerPrefab;
     public GameObject ArcherPlayerPrefab;
+    public GameObject Archer2PlayerPrefab;
     public static GameObject TextMessage;
 
     // Span Point

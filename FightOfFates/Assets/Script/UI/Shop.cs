@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,8 @@ public class Shop : MonoBehaviour
     {
         UpgradeController.SetSmallHealthUpgrade(true);
         UpgradeController.SetMaxHealthUpgrade(false);
-        SceneManager.LoadScene(9);
+        //SceneManager.LoadScene(9);
+        PhotonNetwork.LoadLevel(9);
     }
 
     public void DamageSmall()
@@ -43,7 +45,8 @@ public class Shop : MonoBehaviour
         {
             UpgradeController.SetArrowUpdate(true);
         }
-        SceneManager.LoadScene(9);
+        //SceneManager.LoadScene(9);
+        PhotonNetwork.LoadLevel(9);
     }
 
     public void HealthMax()
@@ -51,7 +54,8 @@ public class Shop : MonoBehaviour
 
         UpgradeController.SetSmallHealthUpgrade(false);
         UpgradeController.SetMaxHealthUpgrade(true);
-        SceneManager.LoadScene(9);
+        //SceneManager.LoadScene(9);
+        PhotonNetwork.LoadLevel(9);
     }
 
     public void DamageMax()
@@ -60,6 +64,7 @@ public class Shop : MonoBehaviour
         UpgradeController.SetDoubleShootUpgrade(true);
         UpgradeController.SetArrowUpdate(false);
         UpgradeController.SetBulletUpdate(false);
-        SceneManager.LoadScene(9);
+        //SceneManager.LoadScene(9);
+        PhotonNetwork.LoadLevel(9);
     }
 }

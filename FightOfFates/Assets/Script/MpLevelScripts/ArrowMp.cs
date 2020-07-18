@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ArrowMp : MonoBehaviour
@@ -19,8 +20,7 @@ public class ArrowMp : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    {          
         if (arrowUpdate)
         {
             GetComponent<SpriteRenderer>().sprite = update;
@@ -30,8 +30,29 @@ public class ArrowMp : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = normal;
         }
+        if (UpgradeController.GetRapidFire())
+        {
+            speed += 8;
+        }
 
-        rb.velocity = transform.right * speed;
+        //rb.velocity = transform.right * speed;
+    }
+
+    public void SetDirection(bool facingRight)
+    {
+        Debug.Log("Arrow direction right:" + facingRight);
+        //rb.velocity = (facingRight ? transform.right : -transform.right) * speed;
+        if (facingRight)
+        {
+            rb.velocity = transform.right * speed;
+        }
+        else
+        {
+            rb.velocity = -transform.right * speed;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        Debug.Log("Arrow velocity:" + rb.velocity);
+        Debug.Log("Arrow direcction" + rb.transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)

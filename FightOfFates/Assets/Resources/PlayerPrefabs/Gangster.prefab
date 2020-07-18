@@ -71,15 +71,15 @@ GameObject:
   - component: {fileID: 6018054539677441383}
   - component: {fileID: 6018054539677441179}
   - component: {fileID: 6018054539677441176}
-  - component: {fileID: 6018054539677441177}
   - component: {fileID: 6018054539677441178}
   - component: {fileID: 4571093821557236770}
   - component: {fileID: 5769652181894578011}
   - component: {fileID: 3867003970615794437}
   - component: {fileID: 4443102733965220085}
   - component: {fileID: 6575495221494682163}
+  - component: {fileID: 6192764835262600843}
   m_Layer: 10
-  m_Name: Gangster 1
+  m_Name: Gangster
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,32 +174,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6018054539677441177
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018054539677441380}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 3.2, y: 3.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.72, y: 2.2}
-  m_EdgeRadius: 0
 --- !u!95 &6018054539677441178
 Animator:
   serializedVersion: 3
@@ -234,7 +208,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 5769652181894578011}
@@ -258,14 +232,23 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Speed
   - Type: 4
     SynchronizeType: 0
     Name: IsGrounded
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: IsShooting
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsDead
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsWinning
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsWinningLoop
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -284,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
+  m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &4443102733965220085
@@ -301,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6018054539662925553}
   firePoint2: {fileID: 2442992197070466070}
-  bulletPrefab: {fileID: 4431559551109896016, guid: 4cd76bb623c8fa0498720c45f39b10dc,
+  bulletPrefab: {fileID: 2252175845020130415, guid: 8979e4cf736a95a4dbc1835e7db0c55f,
     type: 3}
   animator: {fileID: 6018054539677441178}
 --- !u!114 &6575495221494682163
@@ -321,6 +304,7 @@ MonoBehaviour:
   dust: {fileID: 6018054540330146383}
   knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 10}
+  coffin: {fileID: 0}
   speed: 15
   groundCheck: {fileID: 6018054539717124324}
   checkRadius: 0.5
@@ -328,6 +312,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 6018054539677441178}
+--- !u!70 &6192764835262600843
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018054539677441380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 899a73838b9243949bccf9febfa91403, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1, y: 0}
+  m_Size: {x: 1.34, y: 2.22}
+  m_Direction: 0
 --- !u!1 &6018054539717124325
 GameObject:
   m_ObjectHideFlags: 0
