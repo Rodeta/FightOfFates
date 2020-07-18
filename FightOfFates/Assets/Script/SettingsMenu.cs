@@ -42,14 +42,14 @@ public class SettingsMenu : MonoBehaviour
         {
             sound.GetComponent<Image>().sprite = mute;
             UpgradeController.SetSoundStatus(1);
-            StartMenuSound();
+            StopMenuSound();
 
         }
         else
         {
             sound.GetComponent<Image>().sprite = unmute;
             UpgradeController.SetSoundStatus(0);
-            StopMenuSound();
+            StartMenuSound();
         }
     }
 

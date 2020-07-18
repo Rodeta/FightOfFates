@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a0706f50059904aab68927a62aaba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSound: {fileID: 0}
+  menuSound: {fileID: 1326286331}
 --- !u!82 &1326286331
 AudioSource:
   m_ObjectHideFlags: 0
