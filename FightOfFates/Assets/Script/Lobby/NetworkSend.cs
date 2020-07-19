@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
-using Photon.Pun.Demo.Asteroids;
+using Photon.Pun.LobbyCode;
 
 namespace Assets.Script.Lobby
 {

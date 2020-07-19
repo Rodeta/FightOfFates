@@ -1,7 +1,7 @@
 ﻿using Assets.Script.Lobby;
 using ExitGames.Client.Photon;
 using Photon.Pun;
-using Photon.Pun.Demo.Asteroids;
+using Photon.Pun.LobbyCode;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using System;

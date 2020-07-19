@@ -15,7 +15,7 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 
-namespace Photon.Pun.Demo.Asteroids
+namespace Photon.Pun.LobbyCode
 {
     public class PlayerListEntry : MonoBehaviour
     {

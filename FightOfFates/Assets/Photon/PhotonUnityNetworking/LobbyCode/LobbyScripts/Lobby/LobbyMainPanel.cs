@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Photon.Pun.Demo.Asteroids
+namespace Photon.Pun.LobbyCode
 {
     public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
