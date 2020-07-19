@@ -46,7 +46,7 @@ public class Arrow : MonoBehaviour
 
         if (enemy != null)
         {
-            attackDetails[0] = 1f;
+            attackDetails[0] = 4f;
             attackDetails[1] = transform.position.x;
             enemy.Damage(attackDetails);
         }
