@@ -103,7 +103,18 @@ public class ArcherMPlayerController : MPlayer
 
                 }
             }
-
+            if (animator.GetBool("IsDead"))
+            {
+                GameObject dancers = GameObject.Find("Coffin");
+                if(dancers == null)
+                {
+                    dancers = GameObject.Find("Coffin(Clone)");
+                }
+                if(dancers != null)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 
