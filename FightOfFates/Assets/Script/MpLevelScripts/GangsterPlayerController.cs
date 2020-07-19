@@ -86,7 +86,7 @@ public class GangsterPlayerController : MPlayer
                     VictoryLoop();
                 }
             }
-            else
+            else if(lost)
             {
                 Die();
 

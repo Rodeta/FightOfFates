@@ -9,6 +9,6 @@ public class Portal2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(8);
     }
 }

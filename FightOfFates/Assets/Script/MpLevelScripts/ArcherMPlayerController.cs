@@ -93,7 +93,7 @@ public class ArcherMPlayerController : MPlayer
                     VictoryLoop();
                 }
             }
-            else
+            else if(lost)
             {
                 Die();
 

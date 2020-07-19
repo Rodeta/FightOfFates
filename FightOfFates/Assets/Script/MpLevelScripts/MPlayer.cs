@@ -69,7 +69,7 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
     public GameObject coffin;
 
 
-
+    private bool isTriggered;
   
 
     // Start is called before the first frame update
@@ -175,6 +175,7 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        print(currentHealth);
         if (photonView.IsMine)
         {
             healthBar.SetHealth(currentHealth);
@@ -269,8 +270,9 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
         {
             if (!lost)
             {
-                finishGame = true;
                 victory = true;
+                finishGame = true;
+                
             }
         }
     }
