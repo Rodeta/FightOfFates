@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Photon.Pun.Demo.Asteroids;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -23,12 +25,30 @@ public class ArrowMp : MonoBehaviour
     {          
         if (arrowUpdate)
         {
-            GetComponent<SpriteRenderer>().sprite = update;
-            speed = 38f;
+            object arrowStyle;
+            if(PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.ARCHERFIREARROW, out arrowStyle))
+            {
+                arrowStyle = (string)arrowStyle;
+                if (arrowStyle.Equals("fire"))
+                {
+                    GetComponent<SpriteRenderer>().sprite = update;
+                    speed = 38f;
+                }
+            }
+            
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = normal;
+            object arrowStyle;
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.ARCHERFIREARROW, out arrowStyle))
+            {
+                arrowStyle = (string)arrowStyle;
+                if (arrowStyle.Equals("no"))
+                {
+                    GetComponent<SpriteRenderer>().sprite = normal;
+                }
+            }            
+            
         }
         if (UpgradeController.GetRapidFire())
         {

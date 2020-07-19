@@ -12,6 +12,8 @@ namespace Photon.Pun.Demo.Asteroids
         public const string MONEY = "PlayersMoney";
         public const string COUNTDOWN_READY = "CountdownEnd";
         public const string PLAYERISFIRST = "PlayerIsFirst";
+        public const string ARCHERFIREARROW = "FireArrow";
+        public const string GANGSTERREDBULLET = "RedBullet";
 
         public static Color GetColor(int colorChoice)
         {

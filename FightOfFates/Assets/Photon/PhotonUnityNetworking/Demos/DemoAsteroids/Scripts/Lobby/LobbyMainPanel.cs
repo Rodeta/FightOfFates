@@ -271,6 +271,8 @@ namespace Photon.Pun.Demo.Asteroids
                 }
                 ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
                 hash.Add(Constance.PLAYERISFIRST, 2);
+                hash.Add(Constance.ARCHERFIREARROW, "no");
+                hash.Add(Constance.GANGSTERREDBULLET, "no");
                 p.SetCustomProperties(hash);
             }
             
