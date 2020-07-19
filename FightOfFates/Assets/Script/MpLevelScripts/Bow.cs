@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Photon.Pun;
+using Photon.Pun.Demo.Asteroids;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -69,12 +70,23 @@ public class Bow : MonoBehaviour
     {
         if (photonView.IsMine)
         {
+            string prefabPath = Path.Combine("Projectiles", "Arrow_Normal");
+            object arrowStyle;
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.ARCHERFIREARROW, out arrowStyle))
+            {
+                arrowStyle = (string)arrowStyle;
+                if (arrowStyle.Equals("fire"))
+                {
+                    prefabPath = Path.Combine("Projectiles", "Arrow_Fire");
+                }
+            }
+
             facingRight = archerPlayerController.getFacingRight();
-            GameObject arrow1= PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint.position, Quaternion.identity, 0);
+            GameObject arrow1= PhotonNetwork.Instantiate(prefabPath, firePoint.position, Quaternion.identity, 0);
             arrow1.GetComponent<ArrowMp>().SetDirection(facingRight);
             if (doubleShoot)
             {
-                GameObject arrow2 = PhotonNetwork.Instantiate(Path.Combine("Projectiles", "Arrow_Normal"), firePoint2.position, Quaternion.identity, 0);
+                GameObject arrow2 = PhotonNetwork.Instantiate(prefabPath, firePoint2.position, Quaternion.identity, 0);
                 arrow2.GetComponent<ArrowMp>().SetDirection(facingRight);
             }
         }

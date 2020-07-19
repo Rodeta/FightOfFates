@@ -26,33 +26,12 @@ public class ArrowMp : MonoBehaviour
     {          
         if (arrowUpdate)
         {
-            object arrowStyle;
-            if(PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.ARCHERFIREARROW, out arrowStyle))
-            {
-                arrowStyle = (string)arrowStyle;
-                if (arrowStyle.Equals("fire"))
-                {
-                    if (GetComponent<PhotonView>().IsMine)
-                    {
-                        GetComponent<SpriteRenderer>().sprite = update;
-                        speed = 38f;
-                    }
-                }
-            }
-            
+            GetComponent<SpriteRenderer>().sprite = update;
+            speed = 38f;
         }
         else
         {
-            object arrowStyle;
-            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.ARCHERFIREARROW, out arrowStyle))
-            {
-                arrowStyle = (string)arrowStyle;
-                if (arrowStyle.Equals("no"))
-                {
-                    GetComponent<SpriteRenderer>().sprite = normal;
-                }
-            }            
-            
+            GetComponent<SpriteRenderer>().sprite = normal;
         }
         if (UpgradeController.GetRapidFire())
         {
