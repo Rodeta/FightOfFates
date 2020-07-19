@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Pun.Demo.Asteroids;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,11 +40,32 @@ public class Shop : MonoBehaviour
     {
         if(modus == 1)
         {
-            UpgradeController.SetBulletUpdate(true);
+            foreach(Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            {
+                if (p.Equals(PhotonNetwork.LocalPlayer))
+                {
+                    ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+                    hash.Add(Constance.GANGSTERREDBULLET, "red");
+                    p.SetCustomProperties(hash);
+                    PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                    UpgradeController.SetBulletUpdate(true);
+                }
+            }
         }
         else
         {
-            UpgradeController.SetArrowUpdate(true);
+            foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+            {
+                if (p.Equals(PhotonNetwork.LocalPlayer))
+                {
+                    ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+                    hash.Add(Constance.ARCHERFIREARROW, "fire");
+                    p.SetCustomProperties(hash);
+                    PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                    UpgradeController.SetArrowUpdate(true);
+                }
+            }
+            
         }
         //SceneManager.LoadScene(9);
         PhotonNetwork.LoadLevel(9);
@@ -64,6 +86,17 @@ public class Shop : MonoBehaviour
         UpgradeController.SetDoubleShootUpgrade(true);
         UpgradeController.SetArrowUpdate(false);
         UpgradeController.SetBulletUpdate(false);
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
+        {
+            if (p.Equals(PhotonNetwork.LocalPlayer))
+            {
+                ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+                hash.Add(Constance.ARCHERFIREARROW, "no");
+                hash.Add(Constance.GANGSTERREDBULLET, "no");
+                p.SetCustomProperties(hash);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            }
+        }
         //SceneManager.LoadScene(9);
         PhotonNetwork.LoadLevel(9);
     }

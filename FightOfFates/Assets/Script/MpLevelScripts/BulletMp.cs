@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Photon.Pun.Demo.Asteroids;
+using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,12 +23,30 @@ public class BulletMp : MonoBehaviour
 
         if (bulletUpdate)
         {
-            GetComponent<SpriteRenderer>().sprite = update;
-            speed = 38f;
+            object bulletStyle;
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.GANGSTERREDBULLET, out bulletStyle))
+            {
+                bulletStyle = (string)bulletStyle;
+                if (bulletStyle.Equals("red"))
+                {
+                    GetComponent<SpriteRenderer>().sprite = update;
+                    speed = 38f;
+                }
+            }
+            
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = normal;
+            object bulletStyle;
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(Constance.GANGSTERREDBULLET, out bulletStyle))
+            {
+                bulletStyle = (string)bulletStyle;
+                if (bulletStyle.Equals("no"))
+                {
+                    GetComponent<SpriteRenderer>().sprite = normal;
+                }
+            }
+            
         }
 
         //rb.velocity = transform.right * speed;
