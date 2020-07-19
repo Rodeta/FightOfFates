@@ -224,13 +224,15 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
 
     void CheckDeath()
     {
-      
-        if (currentHealth <= 0)
+        if (photonView.IsMine)
         {
-            finishGame = true;
-            lost = true;
+            if (currentHealth <= 0)
+            {
+                finishGame = true;
+                lost = true;
 
-            NetworkSend.SendEnd();
+                NetworkSend.SendEnd();
+            }
         }
     }
 
