@@ -77,7 +77,15 @@ public class ArrowMp : MonoBehaviour
         {
             attackDetails[0] = 1f;
             attackDetails[1] = transform.position.x;
-            adversary.DamageWithKnockback(attackDetails);
+            if (UpgradeController.GetArrowUpdate())
+            {
+                adversary.DamageWithKnockback(attackDetails, 75);
+
+            } else
+            {
+                adversary.DamageWithKnockback(attackDetails, 50);
+
+            }
         }
 
         Debug.Log(hitInfo.name);

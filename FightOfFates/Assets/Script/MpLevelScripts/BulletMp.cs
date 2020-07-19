@@ -84,7 +84,17 @@ public class BulletMp : MonoBehaviour
         {
             attackDetails[0] = 1f;
             attackDetails[1] = transform.position.x;
-            adversary.DamageWithKnockback(attackDetails);
+            attackDetails[1] = transform.position.x;
+            if (UpgradeController.GetBulletUpdate())
+            {
+                adversary.DamageWithKnockback(attackDetails, 15);
+
+            }
+            else
+            {
+                adversary.DamageWithKnockback(attackDetails, 10);
+
+            }
         }
 
         Debug.Log(hitInfo.name);

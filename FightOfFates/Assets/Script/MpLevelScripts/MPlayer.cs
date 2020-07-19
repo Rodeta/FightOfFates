@@ -75,6 +75,8 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
     // Start is called before the first frame update
     void Start()
     {
+        MusicSelector musicSelector = GameObject.Find("MusicSelector").GetComponent<MusicSelector>();
+        musicSelector.StartTheme();
         finishGame = false;
         // Max health upgrade
         if (UpgradeController.GetMaxHealthUpgrade())
@@ -183,7 +185,7 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
     }
 
 
-    public void DamageWithKnockback(float[] attackDetails)
+    public void DamageWithKnockback(float[] attackDetails, int dmg)
     {
         // knockback Controller
         int direction;
@@ -196,7 +198,7 @@ public abstract class MPlayer : MonoBehaviour, IOnEventCallback
             direction = -1;
         }
         Knockback(direction);
-        TakeDamage(10);
+        TakeDamage(dmg);
     }
 
 
