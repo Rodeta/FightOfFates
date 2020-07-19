@@ -59,7 +59,7 @@ public class SelectPlayerMenuScript : MonoBehaviour, IOnEventCallback
 
         if (eventCode == 2)
         {
-            Debug.Log("Im herer");
+            Debug.Log("First One ");
             object[] data = (object[])photonEvent.CustomData;
 
                 
@@ -79,6 +79,7 @@ public class SelectPlayerMenuScript : MonoBehaviour, IOnEventCallback
 
             if (NetworkSend.first)
             {
+                Debug.Log("Second One ");
                 rightBot.SetActive(false);
                 rightTop.SetActive(false);
                 leftTop.SetActive(true);
