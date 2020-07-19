@@ -32,8 +32,11 @@ public class ArrowMp : MonoBehaviour
                 arrowStyle = (string)arrowStyle;
                 if (arrowStyle.Equals("fire"))
                 {
-                    GetComponent<SpriteRenderer>().sprite = update;
-                    speed = 38f;
+                    if (GetComponent<PhotonView>().IsMine)
+                    {
+                        GetComponent<SpriteRenderer>().sprite = update;
+                        speed = 38f;
+                    }
                 }
             }
             
