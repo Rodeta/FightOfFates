@@ -16,6 +16,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(7);
     }
 
+    public void PlaySinglePlayer()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 
     public void LoadMainMenu()
     {
