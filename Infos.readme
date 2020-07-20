@@ -1,0 +1,6 @@
+Um das Spiel als Multiplayer Spiel zu starten muss in Unity ein Photon Schlüssel angegeben werden.
+
+Dazu muss  in Unity auf "Window" -> "Photon Unity Networking" -> "PUN Wizard" ->"Setup Projekt" -> Code "3ec44df9-21b3-46c4-9a2d-1a6d1735d7f3" eingeben -> "Setup Projekt" geklickt werden.
+Bei der SingelPlayer version ist der Shop fehlerhaft und es nicht möglich in die FinalStage zu kommen.
+Link zu dem Github Repository: https://github.com/Rood95/FightOfFates
+
